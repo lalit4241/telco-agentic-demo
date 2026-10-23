@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Ccircle cx=%228%22 cy=%228%22 r=%227%22 fill=%22%230b3d91%22/%3E%3C/svg%3E">
+<meta name="robots" content="noindex, nofollow">
+<title>Agentic Working Model for Telecoms – live demo</title>
+<style>
+:root{
+  --bg:#f4f6fa;--panel:#fff;--ink:#14213d;--ink2:#4a5568;--ink3:#8a94a6;--line:#e2e7ef;
+  --brand:#0b3d91;--brand2:#1565c0;--accent:#00a3e0;
+  --route:#5b6bd5;--tool:#0b7a75;--guard:#b7791f;--decision:#2d3748;--esc:#c53030;--comms:#2b6cb0;--err:#9b2c2c;
+  --ok:#2f855a;--warn:#b7791f;--bad:#c53030;
+  --r:10px;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.45}
+header{background:linear-gradient(90deg,#0b2a66,#0b3d91 60%,#1565c0);color:#fff;padding:14px 22px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+header h1{font-size:18px;margin:0;font-weight:600;letter-spacing:.2px}
+header .sub{font-size:12.5px;opacity:.85}
+.badge-demo{margin-left:auto;background:#ffd166;color:#3d2c00;font-weight:700;font-size:12px;padding:5px 10px;border-radius:999px;white-space:nowrap}
+header button{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:13px}
+header button:hover{background:rgba(255,255,255,.22)}
+main{display:grid;grid-template-columns:330px minmax(0,1fr) 340px;gap:16px;padding:16px;max-width:1600px;margin:0 auto}
+@media (max-width:1180px){main{grid-template-columns:1fr}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin-bottom:16px}
+.panel h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink2);margin:0 0 10px;font-weight:700}
+.scn{display:block;width:100%;text-align:left;background:#f8fafd;border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin-bottom:6px;cursor:pointer;color:var(--ink);font-size:13px}
+.scn:hover{border-color:var(--brand2);background:#eef4fd}
+.scn.active{border-color:var(--brand);background:#e6efff}
+.scn small{display:block;color:var(--ink3);font-size:11.5px;margin-top:2px}
+label{display:block;font-size:12px;color:var(--ink2);margin:8px 0 3px;font-weight:600}
+select,textarea,input[type=text]{width:100%;border:1px solid var(--line);border-radius:7px;padding:7px 8px;font:inherit;background:#fff;color:var(--ink)}
+textarea{min-height:70px;resize:vertical}
+.row{display:flex;gap:8px;flex-wrap:wrap}.row>*{flex:1;min-width:120px}
+.chk{display:flex;align-items:center;gap:6px;margin-top:8px;font-size:12.5px;color:var(--ink2)}
+.btn{background:var(--brand);color:#fff;border:0;border-radius:8px;padding:9px 14px;font-weight:600;cursor:pointer;margin-top:10px;font-size:13px}
+.btn:hover{background:var(--brand2)}.btn:disabled{opacity:.5;cursor:default}
+.btn.ghost{background:#fff;color:var(--brand);border:1px solid var(--brand)}
+.btn.ok{background:var(--ok)}.btn.bad{background:var(--bad)}
+.btn.sm{padding:5px 10px;margin-top:6px;font-size:12px}
+.profile{font-size:12.5px;color:var(--ink2);background:#f8fafd;border:1px dashed var(--line);border-radius:8px;padding:8px 10px;margin-top:8px}
+.profile b{color:var(--ink)}
+.tag{display:inline-block;font-size:11px;border-radius:999px;padding:2px 8px;margin:2px 4px 2px 0;background:#edf2f7;color:var(--ink2);font-weight:600}
+.tag.vul{background:#fff5f5;color:var(--bad)}.tag.risk{background:#fffaf0;color:var(--warn)}
+.req{background:#0b2a66;color:#fff;border-radius:var(--r);padding:12px 14px;margin-bottom:12px}
+.req .meta{font-size:12px;opacity:.8}.req .txt{font-size:15px;margin-top:4px}
+.intents{margin:6px 0 12px}
+.intent{display:inline-block;background:#e6efff;color:var(--brand);border-radius:999px;font-size:12px;font-weight:700;padding:3px 10px;margin-right:6px}
+.intent.secondary{background:#f0f4f8;color:var(--ink2)}
+.tl{position:relative;margin-left:8px;padding-left:22px;border-left:2px solid var(--line)}
+.ev{position:relative;background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px 11px;margin-bottom:8px}
+.ev:before{content:"";position:absolute;left:-30px;top:12px;width:12px;height:12px;border-radius:50%;background:var(--c,#999);border:2px solid #fff;box-shadow:0 0 0 1px var(--c,#999)}
+.ev .h{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ev .k{font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--c)}
+.ev .a{font-size:12px;color:var(--ink3)}
+.ev .n{margin-left:auto;font-size:11px;color:var(--ink3);font-family:var(--mono)}
+.ev .d{margin-top:3px}
+.ev.tool .d{font-family:var(--mono);font-size:12.5px}
+.ev details{margin-top:6px}.ev summary{cursor:pointer;font-size:12px;color:var(--brand2)}
+pre{background:#0f172a;color:#d6e2ff;border-radius:7px;padding:8px 10px;font-size:11.5px;overflow:auto;max-height:260px;margin:6px 0 0}
+.ev.route{--c:var(--route)}.ev.tool{--c:var(--tool)}.ev.guardrail{--c:var(--guard)}.ev.decision{--c:var(--decision)}
+.ev.escalation{--c:var(--esc);background:#fff8f8}.ev.comms{--c:var(--comms)}.ev.error{--c:var(--err)}
+.ev.guardrail.blocked{background:#fffaf0}
+.wbadge{font-size:10.5px;font-weight:800;color:#fff;background:var(--bad);border-radius:4px;padding:1px 5px}
+.rbadge{font-size:10.5px;font-weight:800;color:#fff;background:var(--tool);border-radius:4px;padding:1px 5px}
+.outcome{border-radius:var(--r);padding:10px 12px;margin:8px 0;border:1px solid var(--line);background:#fff}
+.outcome .s{font-weight:800;font-size:11px;letter-spacing:.06em;border-radius:5px;padding:2px 7px;color:#fff}
+.s-resolved{background:var(--ok)}.s-escalated{background:var(--esc)}.s-blocked{background:#6b46c1}.s-pending_customer{background:var(--warn)}
+.empty{color:var(--ink3);text-align:center;padding:40px 10px}
+.task{border:1px solid var(--line);border-radius:9px;padding:9px 10px;margin-bottom:8px;font-size:12.5px}
+.task .q{font-weight:700;color:var(--brand)}
+.task .st{float:right;font-size:11px;font-weight:800;text-transform:uppercase}
+.st-open{color:var(--warn)}.st-approved{color:var(--ok)}.st-rejected{color:var(--bad)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center}
+.stats div{background:#f8fafd;border:1px solid var(--line);border-radius:8px;padding:6px 2px}
+.stats b{display:block;font-size:18px;color:var(--brand)}.stats span{font-size:10.5px;color:var(--ink3)}
+.arch{display:flex;flex-direction:column;gap:5px;font-size:12px}
+.arch .lyr{border:1px solid var(--line);border-radius:7px;padding:6px 8px;background:#f8fafd}
+.arch .lyr b{display:block;font-size:11px;color:var(--ink2);text-transform:uppercase;letter-spacing:.05em}
+.arch .arrow{text-align:center;color:var(--ink3);line-height:1}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:11.5px;color:var(--ink2);margin-top:10px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;vertical-align:-1px}
+footer{text-align:center;color:var(--ink3);font-size:11.5px;padding:8px 0 20px}
+.bootmsg{max-width:1100px;margin:14px auto 0;background:#fff8e1;border:1px solid #f6c445;color:#5c4400;border-radius:10px;padding:12px 16px;font-size:14px}
+.bootmsg.err{background:#fff5f5;border-color:#feb2b2;color:#742a2a}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#14213d;color:#fff;padding:8px 14px;border-radius:8px;font-size:13px;opacity:0;transition:opacity .25s;pointer-events:none}
+.toast.on{opacity:.95}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Agentic Working Model for Telecoms</h1>
+    <div class="sub">Orchestrator + specialist agents over TM Forum Open APIs, with guardrails and human-in-the-loop · reference prototype</div>
+  </div>
+  <span class="badge-demo">Demo – mock data only · fictional UK operator</span>
+  <button id="resetBtn" title="Reset your session: reseeds data and clears queues">Reset demo</button>
+</header>
+
+<div id="bootmsg" class="bootmsg"><b>Loading the demo…</b> If this message does not disappear within a few seconds, this viewer is blocking scripts
+(chat, email and file-preview panes usually do). Download the file and open it in Chrome, Edge, Safari or Firefox, or use the hosted link.</div>
+<noscript><div class="bootmsg err"><b>JavaScript is disabled or blocked here.</b> Open this page in a normal browser window.</div></noscript>
+<main>
+  <section>
+    <div class="panel">
+      <h2>Scenarios</h2>
+      <div id="scenarios"></div>
+    </div>
+    <div class="panel">
+      <h2>Or type a customer request</h2>
+      <label for="cust">Customer profile</label>
+      <select id="cust"></select>
+      <div id="profile" class="profile"></div>
+      <div class="row">
+        <div><label for="chan">Channel</label><select id="chan"></select></div>
+        <div><label for="order">Order reference</label><select id="order"><option value="">(none)</option></select></div>
+      </div>
+      <label for="txt">Customer says</label>
+      <textarea id="txt" maxlength="500" placeholder="e.g. My broadband is down and I want to cancel"></textarea>
+      <label class="chk"><input type="checkbox" id="otp"> Customer has passed one-time-passcode check</label>
+      <button class="btn" id="runBtn">Run through orchestrator</button>
+    </div>
+  </section>
+
+  <section>
+    <div class="panel">
+      <h2>Agent timeline</h2>
+      <div id="timeline"><div class="empty">Pick a scenario or type a request to see the orchestrator route it, the specialist agent's TMF API calls, the guardrail checks and any hand-off to a human.</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="panel">
+      <h2>Supervisor queue (human-in-the-loop)</h2>
+      <div id="queue"><div class="empty" style="padding:14px">No escalations yet.</div></div>
+    </div>
+    <div class="panel">
+      <h2>Session activity</h2>
+      <div class="stats" id="stats"></div>
+    </div>
+    <div class="panel">
+      <h2>Architecture</h2>
+      <div class="arch">
+        <div class="lyr"><b>Channels</b>Voice · app · web · WhatsApp · employee (Coworker / Slack)</div>
+        <div class="arrow">▼</div>
+        <div class="lyr"><b>Orchestrator (superagent)</b>Injection screen · PII masking · intent routing · fallback to human</div>
+        <div class="arrow">▼</div>
+        <div class="lyr"><b>Specialist agents</b><span id="agentList"></span></div>
+        <div class="arrow">▼ least-privilege tool calls</div>
+        <div class="lyr"><b>Governed gateway (MuleSoft Agent Fabric / MCP stand-in)</b>Allow-lists per agent · audit</div>
+        <div class="arrow">▼</div>
+        <div class="lyr"><b>TM Forum Open APIs (mocked)</b>TMF629 Customer · TMF637 Product Inventory · TMF678 Bill · TMF621 Trouble Ticket · TMF641 Service Order · TMF642 Alarm · TMF620 Catalogue</div>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--route)"></i>Routing</span>
+        <span><i style="background:var(--tool)"></i>TMF API call</span>
+        <span><i style="background:var(--guard)"></i>Guardrail</span>
+        <span><i style="background:var(--decision)"></i>Decision</span>
+        <span><i style="background:var(--esc)"></i>Human escalation</span>
+        <span><i style="background:var(--comms)"></i>Customer comms</span>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>Reference prototype for discussion only. All customers, numbers, orders and bills are fictional; no real systems or personal data are used. Each browser gets its own isolated session.</footer>
+<div class="toast" id="toast"></div>
+
+<!--STATIC-BOOT-->
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function bootMsg(html, isErr){ const b=$("#bootmsg"); if(!b) return; if(html===null){ b.remove(); return; } b.innerHTML=html; b.classList.toggle("err", !!isErr); }
+const store = (() => { try { const k="__t"; localStorage.setItem(k,"1"); localStorage.removeItem(k); return localStorage; } catch (e) { const m={}; return {getItem:k=>m[k]??null,setItem:(k,v)=>{m[k]=String(v);}}; } })();
+function newSid(){ try { if (window.crypto && crypto.randomUUID) return crypto.randomUUID(); } catch (e) {} return "s-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 12); }
+let SID = store.getItem("demoSid");
+if (!SID || !/^[A-Za-z0-9-]{8,64}$/.test(SID)) { SID = newSid(); store.setItem("demoSid", SID); }
+let META = null;
+
+async function api(path, opts = {}) {
+  if (window.LOCAL_API) {  // offline build: the JS port of the engine runs in this page
+    const r = await window.LOCAL_API(opts.method || "GET", path, opts.body || "", SID);
+    if (r.status >= 400) throw new Error(r.body.detail || "error");
+    return r.body;
+  }
+  const r = await fetch(path, {...opts, headers: {"Content-Type": "application/json", "X-Demo-Session": SID, ...(opts.headers||{})}});
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(j.detail || r.statusText);
+  return j;
+}
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");setTimeout(()=>t.classList.remove("on"),2200);}
+
+const KIND_LABEL = {route:"Routing", tool:"TMF API", guardrail:"Guardrail", decision:"Decision", escalation:"Human hand-off", comms:"Customer comms", error:"Error"};
+const STATUS_LABEL = {resolved:"RESOLVED", escalated:"WITH A HUMAN", blocked:"BLOCKED", pending_customer:"AWAITING CUSTOMER"};
+
+function evHtml(e, pfx){
+  const blocked = e.kind === "guardrail" && /BLOCKED|DENIED|exceeds|risk score [6-9]\d|risk score 100/.test(e.detail);
+  let extra = "";
+  if (e.kind === "tool") {
+    const d = e.data || {};
+    extra = `<details><summary>Request / response</summary><pre>${esc(d.method)} ${esc(d.tmf)} · ${esc(d.tool)}\n\nrequest:\n${esc(JSON.stringify(d.request, null, 2))}\n\nresponse:\n${esc(JSON.stringify(d.response, null, 2))}</pre></details>`;
+  }
+  const badge = e.kind === "tool" ? (e.data && e.data.write ? ' <span class="wbadge">WRITE</span>' : ' <span class="rbadge">READ</span>') : "";
+  return `<div class="ev ${esc(e.kind)} ${blocked?"blocked":""}"><div class="h"><span class="k">${esc(KIND_LABEL[e.kind]||e.kind)}</span>${badge}<span class="a">${esc(e.actor)}</span><span class="n">#${pfx ? esc(pfx) + "." : ""}${e.seq}</span></div><div class="d">${esc(e.detail)}</div>${extra}</div>`;
+}
+function outcomeHtml(o){
+  return `<div class="outcome"><span class="s s-${esc(o.status)}">${esc(STATUS_LABEL[o.status]||o.status)}</span> <b>${esc(o.agent)}</b><div style="margin-top:5px">${esc(o.summary)}</div>${o.actions&&o.actions.length?`<div style="margin-top:4px;color:var(--ink3);font-size:12px">Actions: ${o.actions.map(esc).join(" · ")}</div>`:""}</div>`;
+}
+
+function renderRun(r){
+  const c = META.customers.find(x => x.id === r.request.customer_id);
+  const intents = r.intents.length ? r.intents.map((i,n)=>`<span class="intent ${n?"secondary":""}">${n?"secondary: ":"primary: "}${esc(i)}</span>`).join("") : '<span class="intent secondary">no intent recognised</span>';
+  $("#timeline").innerHTML = `
+    <div class="req"><div class="meta">${esc(r.title.replace(/->/g,"→"))} · ${esc(c ? c.name : r.request.customer_id)} (${esc(r.request.customer_id)}) · channel: ${esc(r.request.channel)}</div><div class="txt">“${esc(r.request.text)}”</div></div>
+    <div class="intents">${intents}</div>
+    <div class="tl" id="tl">${r.events.map(e => evHtml(e)).join("")}</div>
+    <h2 style="font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink2);margin:14px 0 4px">Outcome</h2>
+    ${r.outcomes.map(outcomeHtml).join("")}
+    <div id="post"></div>`;
+}
+function appendDecision(res){
+  const post = $("#post");
+  const ok = res.task.status === "approved";
+  const html = `<h2 style="font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink2);margin:16px 0 6px">Supervisor decision · ${esc(res.task.id)} (run ${esc(res.task.run)})</h2>
+    <div class="tl">${res.events.map(e => evHtml(e, res.task.id)).join("")}</div>
+    <div class="outcome"><span class="s ${ok ? "s-resolved" : "s-blocked"}">${ok ? "APPROVED" : "REJECTED"}</span> <b>${esc(res.task.queue)}</b><div style="margin-top:5px">${esc(res.task.proposed)}</div></div>`;
+  if (post) { post.insertAdjacentHTML("beforeend", html); post.lastElementChild.scrollIntoView({behavior:"smooth", block:"center"}); }
+  else { $("#timeline").innerHTML = html; }
+}
+
+function renderQueue(tasks){
+  if (!tasks.length) { $("#queue").innerHTML = '<div class="empty" style="padding:14px">No escalations yet.</div>'; return; }
+  $("#queue").innerHTML = tasks.slice().reverse().map(t => `
+    <div class="task"><span class="st st-${esc(t.status)}">${esc(t.status)}</span><span class="q">${esc(t.queue)}</span> · ${esc(t.id)}
+      <div style="margin-top:3px">${esc(t.reason)}</div>
+      <div style="color:var(--ink3);margin-top:2px">Proposed: ${esc(t.proposed)}</div>
+      ${t.status === "open" ? `<div class="row" style="gap:6px"><button class="btn sm ok" data-id="${esc(t.id)}" data-ap="1">Approve</button><button class="btn sm bad" data-id="${esc(t.id)}" data-ap="0">Reject</button></div>` : ""}
+    </div>`).join("");
+  document.querySelectorAll("#queue button[data-id]").forEach(b => b.onclick = () => decide(b.dataset.id, b.dataset.ap === "1"));
+}
+function renderStats(s){
+  $("#stats").innerHTML = [["Runs",s.runs],["TMF calls",s.toolCalls],["Writes",s.writes],["Open tasks",s.openTasks]].map(([l,v])=>`<div><b>${v}</b><span>${l}</span></div>`).join("");
+}
+
+async function run(body, btn){
+  document.querySelectorAll(".scn").forEach(b=>b.classList.remove("active"));
+  if (btn) btn.classList.add("active");
+  try { const r = await api("/api/run", {method:"POST", body: JSON.stringify(body)}); renderRun(r); renderQueue(r.tasks); renderStats(r.stats); }
+  catch(e){ toast("Error: " + e.message); }
+}
+async function decide(id, approve){
+  try { const r = await api(`/api/queue/${encodeURIComponent(id)}/decision`, {method:"POST", body: JSON.stringify({approve})});
+        appendDecision(r); renderQueue(r.tasks); renderStats(r.stats); toast(`${id} ${approve?"approved":"rejected"}`); }
+  catch(e){ toast("Error: " + e.message); }
+}
+function renderProfile(){
+  const c = META.customers.find(x => x.id === $("#cust").value); if (!c) return;
+  $("#profile").innerHTML = `<b>${esc(c.name)}</b> · ${esc(c.segment)} · ${esc(c.postcode)} · ${c.tenureMonths} months<br>${c.products.map(p=>`<span class="tag">${esc(p)}</span>`).join("")}${c.vulnerable?'<span class="tag vul">vulnerable</span>':""}${c.riskSignals.map(s=>`<span class="tag risk">${esc(s)}</span>`).join("")}`;
+  const ord = $("#order"); ord.innerHTML = '<option value="">(none)</option>' + META.orders.filter(o=>o.customer===c.id).map(o=>`<option value="${esc(o.id)}">${esc(o.id)} · ${esc(o.spec)} · ${esc(o.state)}</option>`).join("");
+}
+
+async function init(){
+  if (window.ENGINE_ERROR) throw new Error("engine failed to start: " + window.ENGINE_ERROR.message);
+  bootMsg("<b>Loading the demo…</b>");
+  META = await api("/api/meta");
+  $("#scenarios").innerHTML = META.scenarios.map(s => `<button class="scn" data-i="${s.index}">${esc(s.title.replace(/^\d+\.\s*/,"").replace(/->/g,"→"))}<small>${esc(s.customer_id)} · ${esc(s.channel)} · “${esc(s.text.length>70?s.text.slice(0,70)+"…":s.text)}”</small></button>`).join("");
+  document.querySelectorAll(".scn").forEach(b => b.onclick = () => run({scenario: +b.dataset.i}, b));
+  $("#cust").innerHTML = META.customers.map(c=>`<option value="${esc(c.id)}">${esc(c.name)} (${esc(c.id)}, ${esc(c.segment)})</option>`).join("");
+  $("#chan").innerHTML = META.channels.map(c=>`<option>${esc(c)}</option>`).join("");
+  $("#agentList").innerHTML = META.agents.map(a=>`<span class="tag" title="${esc(a.maps_to)}">${esc(a.name)}</span>`).join("");
+  $("#cust").onchange = renderProfile; renderProfile();
+  $("#runBtn").onclick = () => { const t=$("#txt").value.trim(); if(!t){toast("Type what the customer says");return;}
+    run({customer_id: $("#cust").value, text: t, channel: $("#chan").value, order_id: $("#order").value || null, otp_verified: $("#otp").checked}); };
+  $("#txt").addEventListener("keydown", e => { if (e.key==="Enter" && (e.metaKey||e.ctrlKey)) $("#runBtn").click(); });
+  $("#resetBtn").onclick = async () => { const r = await api("/api/reset", {method:"POST"}); renderQueue(r.tasks); renderStats(r.stats);
+    $("#timeline").innerHTML = '<div class="empty">Session reset: data reseeded and queues cleared.</div>'; toast("Demo reset"); };
+  const q = await api("/api/queue"); renderQueue(q.tasks); renderStats(q.stats);
+  bootMsg(null);
+}
+init().catch(e => bootMsg(`<b>The demo could not start:</b> ${esc(e.message)}. ` +
+  (window.LOCAL_API ? "Try opening this file in a current desktop browser (Chrome, Edge, Safari or Firefox)."
+                    : "The demo server may be restarting; reload in a few seconds."), true));
+</script>
+</body>
+</html>
