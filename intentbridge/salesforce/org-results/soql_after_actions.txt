@@ -1,0 +1,37 @@
+┌──────────┬─────────────────┬───────────┬──────────────────┬─────────────────────┬───────────────┬─────────────────────────┬────────────────────┐
+│ NAME     │ ACCOUNT__R.NAME │ AMOUNT__C │ STATUS__C        │ DECISION_RULE__C    │ OWNER.NAME    │ TMF678_ADJUSTMENT_ID__C │ DECIDED_BY__C      │
+├──────────┼─────────────────┼───────────┼──────────────────┼─────────────────────┼───────────────┼─────────────────────────┼────────────────────┤
+│ CR-00001 │ Sarah Mitchell  │ 38        │ Applied          │ WITHIN_CAP          │ Lalit Chauhan │ ADJ-069933              │ null               │
+│ CR-00002 │ David Okafor    │ 72.5      │ Approved         │ CREDIT_CAP          │ IB Supervisor │ ADJ-208667              │ 005g800000CzrdBAAR │
+│ CR-00003 │ Arthur Bennett  │ 30        │ Pending Approval │ VULNERABLE_CUSTOMER │ IB Supervisor │ null                    │ null               │
+│ CR-00004 │ Priya Shah      │ 5         │ Pending Approval │ SIM_SWAP_RISK       │ IB Supervisor │ null                    │ null               │
+└──────────┴─────────────────┴───────────┴──────────────────┴─────────────────────┴───────────────┴─────────────────────────┴────────────────────┘
+
+Total number of records retrieved: 4.
+┌────────────────────────────┬────────────────────┬───────────────────┬─────────────────────────────────────────────────────────────────┬─────────────────────┐
+│ NAME                       │ SITES_REQUESTED__C │ SITES_FEASIBLE__C │ INFEASIBLE_SITES__C                                             │ LIFECYCLE_STATUS__C │
+├────────────────────────────┼────────────────────┼───────────────────┼─────────────────────────────────────────────────────────────────┼─────────────────────┤
+│ SD-WAN 99.95% / 20ms probe │ 40                 │ 37                │ NW-S13 (Carlisle: 5G slice capacity at 96% in the serving cell)│ assessed            │
+│                            │                    │                   │ NW-S31 (Truro: FTTC access only, no 5G coverage)               ││
+│                            │                    │                   │ NW-S37 (Inverness: FTTC access only, no 5G coverage)            ││
+└────────────────────────────┴────────────────────┴───────────────────┴─────────────────────────────────────────────────────────────────┴─────────────────────┘
+
+Total number of records retrieved: 1.
+┌────────────┬────────┬───────────────────────┬─────────────┬─────────────────────┐
+│ NAME       │ SEQ__C │ TOOL__C               │ DECISION__C │ RULE__C             │
+├────────────┼────────┼───────────────────────┼─────────────┼─────────────────────┤
+│ AUD-000001 │ 1      │ intent.create(probe)  │ allow       │ SCOPED_WRITE        │
+│ AUD-000002 │ 2      │ bill.diagnose         │ allow       │ READ_IN_SCOPE       │
+│ AUD-000003 │ 3      │ bill.diagnose         │ allow       │ READ_IN_SCOPE       │
+│ AUD-000004 │ 4      │ bill.diagnose         │ allow       │ READ_IN_SCOPE       │
+│ AUD-000005 │ 5      │ bill.diagnose         │ allow       │ READ_IN_SCOPE       │
+│ AUD-000006 │ 6      │ recommendation.get    │ allow       │ READ_IN_SCOPE       │
+│ AUD-000007 │ 7      │ recommendation.get    │ allow       │ READ_IN_SCOPE       │
+│ AUD-000008 │ 8      │ billAdjustment.create │ allow       │ WITHIN_CAP          │
+│ AUD-000009 │ 9      │ billAdjustment.create │ escalate    │ CREDIT_CAP          │
+│ AUD-000010 │ 10     │ billAdjustment.decide │ approved    │ SUPERVISOR_DECISION │
+│ AUD-000011 │ 11     │ billAdjustment.create │ escalate    │ VULNERABLE_CUSTOMER │
+│ AUD-000012 │ 12     │ billAdjustment.create │ escalate    │ SIM_SWAP_RISK       │
+└────────────┴────────┴───────────────────────┴─────────────┴─────────────────────┘
+
+Total number of records retrieved: 12.

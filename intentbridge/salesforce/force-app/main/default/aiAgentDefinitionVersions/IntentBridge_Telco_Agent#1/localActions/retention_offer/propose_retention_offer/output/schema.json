@@ -1,0 +1,54 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "churnRisk" : {
+      "title" : "Churn Risk",
+      "description" : "Churn risk score 0 to 1",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "guidance" : {
+      "title" : "Guidance",
+      "description" : "How to present the offer",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "offerCode" : {
+      "title" : "Offer Code",
+      "description" : "Product offering code",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "offerName" : {
+      "title" : "Offer Name",
+      "description" : "Offer name",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "requiresHuman" : {
+      "title" : "Requires Human",
+      "description" : "A person must make the offer",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "withinAuthority" : {
+      "title" : "Within Authority",
+      "description" : "Within the agent's discount authority",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

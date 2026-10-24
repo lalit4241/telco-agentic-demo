@@ -6,6 +6,8 @@ A self-contained demo of an **agentic working model for telecoms**, written afte
 
 A check of that page — HTTP status, all eight scenarios, one supervisor approval, and the prototype test run — is in [TEST_RESULTS.md](TEST_RESULTS.md).
 
+**IntentBridge demo:** [open `./intentbridge/`](./intentbridge/) ([live](https://lalit4241.github.io/telco-agentic-demo/intentbridge/)) — the AIforce × TM Forum ODA working model, one offline HTML file. Its test record is in [intentbridge/TEST_RESULTS.md](intentbridge/TEST_RESULTS.md).
+
 The page at the root (`index.html`) is the offline build: one HTML file, pure JavaScript, no network calls and no API keys. Open that URL, pick one of the eight scenarios (or type a free-text request), and follow the trace — routing, TMF reads and writes, guardrail decisions, customer messages, and supervisor approvals.
 
 ## Run the prototype locally

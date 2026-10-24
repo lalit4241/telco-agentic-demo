@@ -1,0 +1,14 @@
+{
+  "required" : [ "searchTerm" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "searchTerm" : {
+      "title" : "Search Term",
+      "description" : "Customer name, customer id or billing account number",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

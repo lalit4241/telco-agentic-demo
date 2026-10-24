@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+  <label>IB Agent Audit Log</label><pluralLabel>IB Agent Audit Logs</pluralLabel><nameField><label>Entry</label><type>AutoNumber</type><displayFormat>AUD-{000000}</displayFormat><startingNumber>1</startingNumber></nameField>
+  <description>Hash-chained (SHA-256) record of every agent tool call and human decision. PII is masked before it is written.</description>
+  <deploymentStatus>Deployed</deploymentStatus><sharingModel>ReadWrite</sharingModel>
+  <enableActivities>false</enableActivities><enableHistory>true</enableHistory><enableReports>true</enableReports><enableSearch>true</enableSearch>
+  <enableBulkApi>true</enableBulkApi><enableSharing>true</enableSharing><enableStreamingApi>true</enableStreamingApi>
+</CustomObject>

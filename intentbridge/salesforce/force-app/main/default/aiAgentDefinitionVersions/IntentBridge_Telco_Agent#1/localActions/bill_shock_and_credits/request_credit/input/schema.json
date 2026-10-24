@@ -1,0 +1,42 @@
+{
+  "required" : [ "accountId", "amount", "reason" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "accountId" : {
+      "title" : "Account Id",
+      "description" : "Account Id from find_customer",
+      "lightning:type" : "lightning__recordIdType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "agentName" : {
+      "title" : "Agent Name",
+      "description" : "Name of the requesting agent",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "amount" : {
+      "title" : "Amount",
+      "description" : "Credit amount in GBP",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "reason" : {
+      "title" : "Reason",
+      "description" : "Why the credit is due, e.g. the network fault",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "serviceProblemId" : {
+      "title" : "Service Problem Id",
+      "description" : "Service problem Id from diagnose_bill_shock, if any",
+      "lightning:type" : "lightning__recordIdType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

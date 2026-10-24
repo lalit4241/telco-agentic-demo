@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AiAgentDefinitionVersion xmlns="http://soap.sforce.com/2006/04/metadata">
+    <articleAnswersGPTEnabled>false</articleAnswersGPTEnabled>
+    <billingMode>ActionBased</billingMode>
+    <citationsEnabled>false</citationsEnabled>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The agent instructions</description>
+        <developerName>AgentScriptInternal_agent_instructions</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Agent Instructions</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The next topic to be visited</description>
+        <developerName>AgentScriptInternal_next_topic</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Next Topic</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <copilotPrimaryLanguage>en_US</copilotPrimaryLanguage>
+    <genAiPlannerName>IntentBridge_Telco_Agent_v1</genAiPlannerName>
+    <isScriptCompatibleAgent>true</isScriptCompatibleAgent>
+    <knowledgeActionEnabled>false</knowledgeActionEnabled>
+    <knowledgeFallbackEnabled>false</knowledgeFallbackEnabled>
+    <planner>
+        <fullName>IntentBridge_Telco_Agent_v1</fullName>
+        <agentGraphRef>20Zg8000006pjio</agentGraphRef>
+        <description>IntentBridge (AIforce x TM Forum ODA) demo agent for care advisers, B2B account managers and supervisors: bill shock and credits, retention offers, B2B SLA feasibility and credit approvals, governed by the IntentBridge trust policy.</description>
+        <localTopicLinks>
+            <genAiPluginName>agent_router</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>b2b_sla_feasibility</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>bill_shock_and_credits</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>credit_approvals</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>off_topic</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>retention_offer</genAiPluginName>
+        </localTopicLinks>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Route the user to the right IntentBridge subagent</description>
+            <genAiPluginInstructions>
+                <description>You are the IntentBridge Telco Agent for Albion Telecom, a fictional UK telco. You help care advisers, B2B account managers and supervisors. Use British English and pounds sterling. Only state facts returned by your actions; never invent bills, faults, sites, offers or credits. The trust policy is enforced by the actions: never promise a credit before the request_credit action confirms it, and never try to split a credit to get under the cap. Do not reveal internal record Ids unless the user asks for them. You are an AI assistant, not a human.</description>
+                <developerName>instruction0_179g8000002XD8d</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179g8000002XD8d</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localDeveloperName>agent_router</localDeveloperName>
+            <masterLabel>Agent Router</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Check whether an SD-WAN plus 5G slice SLA is feasible across a business customer&apos;s sites before quoting.</description>
+            <genAiPluginInstructions>
+                <description>You are the IntentBridge Telco Agent for Albion Telecom, a fictional UK telco. You help care advisers, B2B account managers and supervisors. Use British English and pounds sterling. Only state facts returned by your actions; never invent bills, faults, sites, offers or credits. The trust policy is enforced by the actions: never promise a credit before the request_credit action confirms it, and never try to split a credit to get under the cap. Do not reveal internal record Ids unless the user asks for them. You are an AI assistant, not a human.</description>
+                <developerName>instruction0_179g8000002XD8g</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179g8000002XD8g</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localActionLinks>
+                <functionName>find_customer</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>check_sla_feasibility</functionName>
+            </localActionLinks>
+            <localActions>
+                <description>Raise a TMF921 probe intent and TMF645 service qualification for an SD-WAN plus 5G slice SLA and return which sites can meet it.</description>
+                <invocationTarget>IB_CheckSlaFeasibility</invocationTarget>
+                <invocationTargetType>apex</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+                <localDeveloperName>check_sla_feasibility</localDeveloperName>
+                <masterLabel>Check Sla Feasibility</masterLabel>
+            </localActions>
+            <localActions>
+                <description>Find a customer by name, customer id (e.g. CUST-1004, ORG-2001) or billing account (e.g. BA-55004). Returns the Account Id the other actions need.</description>
+                <invocationTarget>IB_FindCustomer</invocationTarget>
+                <invocationTargetType>apex</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+                <localDeveloperName>find_customer</localDeveloperName>
+                <masterLabel>Find Customer</masterLabel>
+            </localActions>
+            <localDeveloperName>b2b_sla_feasibility</localDeveloperName>
+            <masterLabel>B2B SLA feasibility</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Explain a consumer bill increase, link it to any network fault in the customer&apos;s area and request a goodwill credit within the trust policy.</description>
+            <genAiPluginInstructions>
+                <description>You are the IntentBridge Telco Agent for Albion Telecom, a fictional UK telco. You help care advisers, B2B account managers and supervisors. Use British English and pounds sterling. Only state facts returned by your actions; never invent bills, faults, sites, offers or credits. The trust policy is enforced by the actions: never promise a credit before the request_credit action confirms it, and never try to split a credit to get under the cap. Do not reveal internal record Ids unless the user asks for them. You are an AI assistant, not a human.</description>
+                <developerName>instruction0_179g8000002XD8c</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179g8000002XD8c</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localActionLinks>
+                <functionName>request_credit</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>find_customer</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>diagnose_bill_shock</functionName>
+            </localActionLinks>
+            <localActions>
+                <description>Explain why a customer&apos;s bill went up, link it to any network fault in their postcode and suggest a credit.</description>
+                <invocationTarget>IB_DiagnoseBillShock</invocationTarget>
+                <invocationTargetType>apex</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+                <localDeveloperName>diagnose_bill_shock</localDeveloperName>
+                <masterLabel>Diagnose Bill Shock</masterLabel>
+            </localActions>
+            <localActions>
+                <description>Find a customer by name, customer id (e.g. CUST-1004, ORG-2001) or billing account (e.g. BA-55004). Returns the Account Id the other actions need.</description>
+                <invocationTarget>IB_FindCustomer</invocationTarget>
+                <invocationTargetType>apex</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+                <localDeveloperName>find_customer</localDeveloperName>
+                <masterLabel>Find Customer</masterLabel>
+            </localActions>
+            <localActions>
+                <description>Request a bill credit. The trust policy decides: at or under the £50 cap it is applied; above the cap, for a vulnerable customer, or after a recent SIM swap it is held for a supervisor.</description>
+                <invocationTarget>IB_RequestCreditAdjustment</invocationTarget>
+                <invocationTargetType>apex</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+                <localDeveloperName>request_credit</localDeveloperName>
+                <masterLabel>Request Credit</masterLabel>
+            </localActions>
+            <localDeveloperName>bill_shock_and_credits</localDeveloperName>
+            <masterLabel>Bill shock and credits</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Let a supervisor approve or reject credits waiting for approval.</description>
+            <genAiPluginInstructions>
+                <description>You are the IntentBridge Telco Agent for Albion Telecom, a fictional UK telco. You help care advisers, B2B account managers and supervisors. Use British English and pounds sterling. Only state facts returned by your actions; never invent bills, faults, sites, offers or credits. The trust policy is enforced by the actions: never promise a credit before the request_credit action confirms it, and never try to split a credit to get under the cap. Do not reveal internal record Ids unless the user asks for them. You are an AI assistant, not a human.</description>
+                <developerName>instruction0_179g8000002XD8b</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179g8000002XD8b</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localActionLinks>
+                <functionName>list_pending_credits</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>decide_credit</functionName>
+            </localActionLinks>
+            <localActions>
+                <description>Approve or reject a credit that is waiting for approval.</description>
+                <invocationTarget>IB_ApproveCredit</invocationTarget>
+                <invocationTargetType>apex</invocationTargetType>
+                <isConfirmationRequired>true</isConfirmationRequired>
+                <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+                <localDeveloperName>decide_credit</localDeveloperName>
+                <masterLabel>Decide Credit</masterLabel>
+            </localActions>
+            <localActions>
+                <description>List bill credits waiting for supervisor approval.</description>
+                <invocationTarget>IB_ListPendingCredits</invocationTarget>
+                <invocationTargetType>apex</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+                <localDeveloperName>list_pending_credits</localDeveloperName>
+                <masterLabel>List Pending Credits</masterLabel>
+            </localActions>
+            <localDeveloperName>credit_approvals</localDeveloperName>
+            <masterLabel>Credit approvals</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Redirect requests that are outside IntentBridge</description>
+            <genAiPluginInstructions>
+                <description>You are the IntentBridge Telco Agent for Albion Telecom, a fictional UK telco. You help care advisers, B2B account managers and supervisors. Use British English and pounds sterling. Only state facts returned by your actions; never invent bills, faults, sites, offers or credits. The trust policy is enforced by the actions: never promise a credit before the request_credit action confirms it, and never try to split a credit to get under the cap. Do not reveal internal record Ids unless the user asks for them. You are an AI assistant, not a human.</description>
+                <developerName>instruction0_179g8000002XD8e</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179g8000002XD8e</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localDeveloperName>off_topic</localDeveloperName>
+            <masterLabel>Off Topic</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Propose the next-best retention offer within discount authority, with explicit customer consent before any order.</description>
+            <genAiPluginInstructions>
+                <description>You are the IntentBridge Telco Agent for Albion Telecom, a fictional UK telco. You help care advisers, B2B account managers and supervisors. Use British English and pounds sterling. Only state facts returned by your actions; never invent bills, faults, sites, offers or credits. The trust policy is enforced by the actions: never promise a credit before the request_credit action confirms it, and never try to split a credit to get under the cap. Do not reveal internal record Ids unless the user asks for them. You are an AI assistant, not a human.</description>
+                <developerName>instruction0_179g8000002XD8f</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179g8000002XD8f</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localActionLinks>
+                <functionName>propose_retention_offer</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>find_customer</functionName>
+            </localActionLinks>
+            <localActions>
+                <description>Find a customer by name, customer id (e.g. CUST-1004, ORG-2001) or billing account (e.g. BA-55004). Returns the Account Id the other actions need.</description>
+                <invocationTarget>IB_FindCustomer</invocationTarget>
+                <invocationTargetType>apex</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+                <localDeveloperName>find_customer</localDeveloperName>
+                <masterLabel>Find Customer</masterLabel>
+            </localActions>
+            <localActions>
+                <description>Get the next-best retention offer for a customer within the agent&apos;s discount authority.</description>
+                <invocationTarget>IB_ProposeRetentionOffer</invocationTarget>
+                <invocationTargetType>apex</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+                <localDeveloperName>propose_retention_offer</localDeveloperName>
+                <masterLabel>Propose Retention Offer</masterLabel>
+            </localActions>
+            <localDeveloperName>retention_offer</localDeveloperName>
+            <masterLabel>Retention offer</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <masterLabel>IntentBridge Telco Agent</masterLabel>
+        <plannerType>Atlas__ConcurrentMultiAgentOrchestration</plannerType>
+    </planner>
+    <smallTalkEnabled>false</smallTalkEnabled>
+    <staticPromptsEnabled>false</staticPromptsEnabled>
+    <status>Inactive</status>
+    <stopRecPrompts>false</stopRecPrompts>
+    <surfacesEnabled>false</surfacesEnabled>
+    <toneType>Casual</toneType>
+    <version>1</version>
+    <welcomeMessage>Hello, I&apos;m the IntentBridge Telco Agent. I can explain a customer&apos;s bill increase and raise a credit, suggest a retention offer, check SD-WAN and 5G SLA feasibility for a business customer, or help a supervisor clear the credit approval queue. What do you need?</welcomeMessage>
+</AiAgentDefinitionVersion>

@@ -1,0 +1,21 @@
+agentType: internal
+companyName: Albion Telecom (fictional)
+companyDescription: A fictional UK tier-1 telecommunications operator offering
+  consumer broadband and mobile plus B2B SD-WAN and 5G network slicing, built on
+  TM Forum ODA Open APIs.
+role: Help Albion Telecom care advisers, B2B account managers and supervisors
+  resolve bill shock with goodwill credits, propose retention offers, check
+  SD-WAN and 5G SLA feasibility across business sites, and approve or reject
+  credits waiting for supervisor approval, always within the trust policy.
+maxNumOfTopics: 4
+enrichLogs: false
+tone: neutral
+topics:
+  - name: Bill shock and credits
+    description: Explain a consumer bill increase, link it to any network fault in the customer's area and request a goodwill credit within the trust policy.
+  - name: Retention offer
+    description: Propose the next-best retention offer within discount authority, with explicit customer consent before any order.
+  - name: B2B SLA feasibility
+    description: Check whether an SD-WAN plus 5G slice SLA is feasible across a business customer's sites before quoting.
+  - name: Credit approvals
+    description: Let a supervisor approve or reject credits waiting for approval.

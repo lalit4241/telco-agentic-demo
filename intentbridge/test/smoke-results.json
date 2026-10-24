@@ -1,0 +1,112 @@
+{
+  "url": "file:///workspace/intentbridge/dist/index.html",
+  "chrome": "/usr/bin/google-chrome",
+  "at": "2026-10-24T23:14:42.561Z",
+  "results": [
+    {
+      "name": "Page loads with KPI strip",
+      "ok": true
+    },
+    {
+      "name": "Journey A pauses for AM confirmation",
+      "ok": true,
+      "detail": "waiting"
+    },
+    {
+      "name": "Sequence diagram rendered",
+      "ok": true,
+      "detail": "29 lines"
+    },
+    {
+      "name": "Journey A completes after approval",
+      "ok": true
+    },
+    {
+      "name": "Trace shows TMF921, TMF648, TMF641, TMF656",
+      "ok": true
+    },
+    {
+      "name": "Journey B (over cap) completes",
+      "ok": true
+    },
+    {
+      "name": "£72.50 credit waiting for supervisor",
+      "ok": true
+    },
+    {
+      "name": "Approving changes state",
+      "ok": true
+    },
+    {
+      "name": "Scenario consumer CUST-1001 completes",
+      "ok": true,
+      "detail": "done"
+    },
+    {
+      "name": "Scenario consumer CUST-1002 completes",
+      "ok": true,
+      "detail": "done"
+    },
+    {
+      "name": "Scenario consumer CUST-1003 completes",
+      "ok": true,
+      "detail": "done"
+    },
+    {
+      "name": "Scenario noc completes",
+      "ok": true,
+      "detail": "done"
+    },
+    {
+      "name": "Scenario field completes",
+      "ok": true,
+      "detail": "done"
+    },
+    {
+      "name": "Scenario product completes",
+      "ok": true,
+      "detail": "done"
+    },
+    {
+      "name": "Scenario care completes",
+      "ok": true,
+      "detail": "done"
+    },
+    {
+      "name": "Slackforce (simulated) shows channel messages",
+      "ok": true
+    },
+    {
+      "name": "Audit chain intact",
+      "ok": true
+    },
+    {
+      "name": "Tampering detected",
+      "ok": true
+    },
+    {
+      "name": "Agent Evals all pass",
+      "ok": true,
+      "detail": "15 / 15 passed"
+    },
+    {
+      "name": "CIO calculator base total £59.0m",
+      "ok": true
+    },
+    {
+      "name": "Preset changes the total",
+      "ok": true,
+      "detail": "£104.1m"
+    },
+    {
+      "name": "API explorer returns TMF678 JSON",
+      "ok": true
+    },
+    {
+      "name": "No console errors",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "errors": []
+}

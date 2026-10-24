@@ -1,0 +1,54 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "accountId" : {
+      "title" : "Account Id",
+      "description" : "Salesforce Account Id of the customer",
+      "lightning:type" : "lightning__recordIdType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "customerId" : {
+      "title" : "Customer Id",
+      "description" : "Customer id",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "customerName" : {
+      "title" : "Customer Name",
+      "description" : "Customer name",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "found" : {
+      "title" : "Found",
+      "description" : "Whether exactly one customer matched",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "summary" : {
+      "title" : "Summary",
+      "description" : "Short summary of the lookup",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "vulnerable" : {
+      "title" : "Vulnerable",
+      "description" : "Vulnerable customer flag",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

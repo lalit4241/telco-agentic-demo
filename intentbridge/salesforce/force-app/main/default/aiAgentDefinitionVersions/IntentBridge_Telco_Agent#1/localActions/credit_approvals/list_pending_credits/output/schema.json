@@ -1,0 +1,30 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "pendingCount" : {
+      "title" : "Pending Count",
+      "description" : "Number of credits waiting",
+      "lightning:type" : "lightning__integerType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "pendingJson" : {
+      "title" : "Pending Json",
+      "description" : "Waiting credits as JSON, including creditId, reference, customer, amountGBP, reason and heldBy",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "summary" : {
+      "title" : "Summary",
+      "description" : "Summary of the waiting credits",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

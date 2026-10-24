@@ -1,0 +1,42 @@
+{
+  "required" : [ "accountId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "accountId" : {
+      "title" : "Account Id",
+      "description" : "Account Id of the business customer",
+      "lightning:type" : "lightning__recordIdType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "availabilityTarget" : {
+      "title" : "Availability Target",
+      "description" : "Availability target in percent, e.g. 99.95",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "latencyMs" : {
+      "title" : "Latency Ms",
+      "description" : "Latency target in milliseconds, e.g. 20",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "siteCount" : {
+      "title" : "Site Count",
+      "description" : "Number of sites, used when no site list is given",
+      "lightning:type" : "lightning__integerType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "siteList" : {
+      "title" : "Site List",
+      "description" : "Comma-separated site ids such as NW-S01,NW-S13",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

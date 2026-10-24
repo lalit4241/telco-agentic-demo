@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AiAgentDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <agentDSLEnabled>true</agentDSLEnabled>
+    <agentDescription>IntentBridge (AIforce x TM Forum ODA) demo agent for care advisers, B2B account managers and supervisors: bill shock and credits, retention offers, B2B SLA feasibility and credit approvals, governed by the IntentBridge trust policy.</agentDescription>
+    <agentType>AgentforceEmployeeAgent</agentType>
+    <logPrivateConversationData>false</logPrivateConversationData>
+    <richContentEnabled>true</richContentEnabled>
+    <type>InternalCopilot</type>
+</AiAgentDefinition>

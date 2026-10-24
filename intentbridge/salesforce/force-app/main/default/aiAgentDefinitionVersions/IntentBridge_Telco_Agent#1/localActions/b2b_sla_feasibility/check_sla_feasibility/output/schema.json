@@ -1,0 +1,46 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "infeasibleSites" : {
+      "title" : "Infeasible Sites",
+      "description" : "Sites that cannot meet the SLA, with reasons",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "intentId" : {
+      "title" : "Intent Id",
+      "description" : "Probe intent record Id",
+      "lightning:type" : "lightning__recordIdType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "sitesFeasible" : {
+      "title" : "Sites Feasible",
+      "description" : "Sites that can meet the SLA",
+      "lightning:type" : "lightning__integerType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "sitesRequested" : {
+      "title" : "Sites Requested",
+      "description" : "Sites requested",
+      "lightning:type" : "lightning__integerType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "summary" : {
+      "title" : "Summary",
+      "description" : "Summary for the user",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

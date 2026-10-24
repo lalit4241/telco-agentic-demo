@@ -1,0 +1,22 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "message" : {
+      "title" : "Message",
+      "description" : "Result message",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "status" : {
+      "title" : "Status",
+      "description" : "Approved or Rejected",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

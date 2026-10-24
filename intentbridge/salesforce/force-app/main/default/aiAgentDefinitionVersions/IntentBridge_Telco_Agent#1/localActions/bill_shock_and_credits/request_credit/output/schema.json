@@ -1,0 +1,38 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "creditId" : {
+      "title" : "Credit Id",
+      "description" : "Credit request record Id",
+      "lightning:type" : "lightning__recordIdType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "message" : {
+      "title" : "Message",
+      "description" : "Message to read back to the customer",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "rule" : {
+      "title" : "Rule",
+      "description" : "Trust-policy rule that decided the outcome",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "status" : {
+      "title" : "Status",
+      "description" : "Applied or Pending Approval",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

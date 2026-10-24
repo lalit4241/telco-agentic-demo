@@ -1,0 +1,15 @@
+┌──────────┬─────────────────┬───────────┬──────────────────┬─────────────────────┬───────────────┬─────────────────────────┐
+│ NAME     │ ACCOUNT__R.NAME │ AMOUNT__C │ STATUS__C        │ DECISION_RULE__C    │ OWNER.NAME    │ TMF678_ADJUSTMENT_ID__C │
+├──────────┼─────────────────┼───────────┼──────────────────┼─────────────────────┼───────────────┼─────────────────────────┤
+│ CR-00001 │ Sarah Mitchell  │ 38        │ Applied          │ WITHIN_CAP          │ Lalit Chauhan │ ADJ-069933              │
+│ CR-00002 │ David Okafor    │ 72.5      │ Approved         │ CREDIT_CAP          │ IB Supervisor │ ADJ-208667              │
+│ CR-00003 │ Arthur Bennett  │ 30        │ Pending Approval │ VULNERABLE_CUSTOMER │ IB Supervisor │ null                    │
+│ CR-00004 │ Priya Shah      │ 5         │ Pending Approval │ SIM_SWAP_RISK       │ IB Supervisor │ null                    │
+│ CR-00005 │ Sarah Mitchell  │ 38        │ Applied          │ WITHIN_CAP          │ Lalit Chauhan │ ADJ-142135              │
+│ CR-00006 │ David Okafor    │ 72.5      │ Approved         │ CREDIT_CAP          │ IB Supervisor │ ADJ-055512              │
+│ CR-00007 │ Arthur Bennett  │ 30        │ Pending Approval │ VULNERABLE_CUSTOMER │ IB Supervisor │ null                    │
+└──────────┴─────────────────┴───────────┴──────────────────┴─────────────────────┴───────────────┴─────────────────────────┘
+Total number of records retrieved: 7.
+Error (executeCompileFailure): Compilation failed at Ln 1, Col 78 with the error:
+Method does not exist or incorrect signature: void verifyChain() from the type IB_AuditService
+IBX VERIFY {"ok":true,"entries":21,"brokenAt":null}

@@ -1,0 +1,70 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "currentBill" : {
+      "title" : "Current Bill",
+      "description" : "Current bill in GBP",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "explanation" : {
+      "title" : "Explanation",
+      "description" : "Plain-English explanation",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "increase" : {
+      "title" : "Increase",
+      "description" : "Increase on last month in GBP",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "needsHuman" : {
+      "title" : "Needs Human",
+      "description" : "True for a vulnerable customer or recent SIM swap: a person must handle it",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "rootCause" : {
+      "title" : "Root Cause",
+      "description" : "Root cause of the network fault",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "serviceProblemId" : {
+      "title" : "Service Problem Id",
+      "description" : "Related network fault record Id",
+      "lightning:type" : "lightning__recordIdType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "suggestedCredit" : {
+      "title" : "Suggested Credit",
+      "description" : "Suggested goodwill credit in GBP",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "withinCap" : {
+      "title" : "Within Cap",
+      "description" : "Whether the suggested credit is within the auto-credit cap",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

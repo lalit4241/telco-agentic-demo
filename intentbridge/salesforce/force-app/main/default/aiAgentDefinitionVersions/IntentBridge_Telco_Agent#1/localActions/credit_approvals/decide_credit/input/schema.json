@@ -1,0 +1,28 @@
+{
+  "required" : [ "creditId", "approve" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "approve" : {
+      "title" : "Approve",
+      "description" : "True to approve, False to reject",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "comment" : {
+      "title" : "Comment",
+      "description" : "Supervisor's comment",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "creditId" : {
+      "title" : "Credit Id",
+      "description" : "creditId of the waiting credit, from list_pending_credits",
+      "lightning:type" : "lightning__recordIdType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}
