@@ -30,7 +30,7 @@ def obj(api, label, plural, name_field, desc):
   <enableActivities>false</enableActivities><enableHistory>true</enableHistory><enableReports>true</enableReports><enableSearch>true</enableSearch>
   <enableBulkApi>true</enableBulkApi><enableSharing>true</enableSharing><enableStreamingApi>true</enableStreamingApi>
 </CustomObject>''' % (NS, label, plural, nf, desc))
-    w('%s/tabs/%s.tab-meta.xml' % (B, api), '<CustomTab %s><customObject>true</customObject><motif>Custom57: Building Block</motif></CustomTab>' % NS)
+    if not os.path.exists('%s/tabs/%s.tab-meta.xml' % (B, api)): w('%s/tabs/%s.tab-meta.xml' % (B, api), '<CustomTab %s><customObject>true</customObject><motif>Custom57: Building Block</motif></CustomTab>' % NS)
 
 F = []
 obj('IB_Intent__c', 'IB Intent', 'IB Intents', 'Intent Name', 'TMF921 intent mirrored from the network-domain intent handler (probe, assessed, active).')
@@ -85,6 +85,42 @@ F += [field('Account', 'IB_Customer_Id__c', 'IB Customer Id', 'TextExt', '', 'TM
       field('Account', 'IB_Previous_Bill__c', 'IB Previous Bill', 'Currency'),
       field('Account', 'IB_Tenure_Months__c', 'IB Tenure (months)', 'Number', 0)]
 
+# ---------- Telcoforce extension objects ----------
+obj('IB_Partner__c', 'IB Wholesale Partner', 'IB Wholesale Partners', 'Partner Name', 'TMF668 wholesale partner and its agreement. The partner\'s own agent calls in over A2A; the agreement meters what it may do.')
+F += [field('IB_Partner__c', 'Partner_Id__c', 'Partner Id', 'TextExt'),
+      field('IB_Partner__c', 'Status__c', 'Agreement Status', 'Picklist', ['Active', 'Suspended']),
+      field('IB_Partner__c', 'Daily_Qualification_Limit__c', 'Daily Qualification Limit', 'Number', 0),
+      field('IB_Partner__c', 'Qualified_Today__c', 'Qualified Today', 'Number', 0),
+      field('IB_Partner__c', 'Max_Order_Lines__c', 'Max Lines per Order', 'Number', 0),
+      field('IB_Partner__c', 'Unit_Price__c', 'Wholesale Unit Price (monthly)', 'Currency'),
+      field('IB_Partner__c', 'Products__c', 'Entitled Products', 'Text', 255),
+      field('IB_Partner__c', 'Kill_Switch__c', 'Agent Kill Switch', 'Checkbox', '', 'Agent Fabric kill switch: when ticked every call from this partner\'s agent is refused')]
+obj('IB_Wholesale_Order__c', 'IB Wholesale Order', 'IB Wholesale Orders', ('Order Number', 'WO-{00000}'), 'TMF622 order placed by a partner agent over A2A, inside the agreement.')
+F += [field('IB_Wholesale_Order__c', 'Partner__c', 'Partner', 'Lookup', ('IB_Partner__c', 'Wholesale_Orders')),
+      field('IB_Wholesale_Order__c', 'Product__c', 'Product', 'Text', 80),
+      field('IB_Wholesale_Order__c', 'Lines__c', 'Lines', 'Number', 0),
+      field('IB_Wholesale_Order__c', 'Monthly_Value__c', 'Monthly Value', 'Currency'),
+      field('IB_Wholesale_Order__c', 'Status__c', 'Status', 'Picklist', ['Acknowledged', 'Pending Partner Desk', 'Rejected']),
+      field('IB_Wholesale_Order__c', 'Decision_Rule__c', 'Decision Rule', 'Text', 80)]
+obj('IB_Fallout_Order__c', 'IB Fallout Order', 'IB Fallout Orders', 'Order Name', 'TMF622 product order that failed in fulfilment. The back-office agent repairs it with an approved playbook or hands it to the ops lead.')
+F += [field('IB_Fallout_Order__c', 'Order_Id__c', 'Product Order Id', 'TextExt'),
+      field('IB_Fallout_Order__c', 'Account__c', 'Account', 'Lookup', ('Account', 'IB_Fallout_Orders')),
+      field('IB_Fallout_Order__c', 'Error_Code__c', 'Fallout Error Code', 'Text', 80),
+      field('IB_Fallout_Order__c', 'State__c', 'State', 'Picklist', ['failed', 'inProgress', 'held', 'completed']),
+      field('IB_Fallout_Order__c', 'Repair_Path__c', 'Repair Path', 'Text', 80),
+      field('IB_Fallout_Order__c', 'Decision_Rule__c', 'Decision Rule', 'Text', 80),
+      field('IB_Fallout_Order__c', 'Amount__c', 'Order Price (monthly)', 'Currency'),
+      field('IB_Fallout_Order__c', 'Catalogue_Price__c', 'Catalogue Price (monthly)', 'Currency'),
+      field('IB_Fallout_Order__c', 'Repair_Log__c', 'Repair Log', 'LongTextArea')]
+obj('IB_Customer_Notification__c', 'IB Customer Notification', 'IB Customer Notifications', ('Notification Number', 'CN-{00000}'), 'TMF681 proactive message about a network event. Vulnerable customers get a call from a person instead.')
+F += [field('IB_Customer_Notification__c', 'Account__c', 'Account', 'Lookup', ('Account', 'IB_Notifications')),
+      field('IB_Customer_Notification__c', 'Service_Problem__c', 'Service Problem', 'Lookup', ('IB_Service_Problem__c', 'Notifications')),
+      field('IB_Customer_Notification__c', 'Template__c', 'Template', 'Text', 80),
+      field('IB_Customer_Notification__c', 'Channel__c', 'Channel', 'Picklist', ['sms', 'email', 'app', 'human-call']),
+      field('IB_Customer_Notification__c', 'Status__c', 'Status', 'Picklist', ['Sent', 'Pending Human Call', 'Called']),
+      field('IB_Customer_Notification__c', 'Decision_Rule__c', 'Decision Rule', 'Text', 80),
+      field('IB_Customer_Notification__c', 'Message__c', 'Message', 'Text', 255)]
+
 # Custom metadata type
 w('%s/objects/IB_Trust_Policy__mdt/IB_Trust_Policy__mdt.object-meta.xml' % B, '<CustomObject %s><label>IB Trust Policy</label><pluralLabel>IB Trust Policies</pluralLabel><visibility>Public</visibility><description>Trust-pack thresholds read by the IntentBridge actions.</description></CustomObject>' % NS)
 for n, l, sc in [('Auto_Credit_Cap__c', 'Auto Credit Cap', 2), ('Discount_Authority_Pct__c', 'Discount Authority %', 2), ('SLA_Target__c', 'SLA Target %', 3), ('Sim_Swap_Threshold__c', 'SIM Swap Risk Threshold', 0)]:
@@ -99,11 +135,12 @@ w('%s/customMetadata/IB_Trust_Policy.Default.md-meta.xml' % B, '''
 </CustomMetadata>''' % NS)
 
 # Queue
-w('%s/queues/IB_Supervisor.queue-meta.xml' % B, '<Queue %s><name>IB Supervisor</name><doesSendEmailToMembers>false</doesSendEmailToMembers><queueSobject><sobjectType>IB_Credit_Adjustment__c</sobjectType></queueSobject></Queue>' % NS)
+w('%s/queues/IB_Supervisor.queue-meta.xml' % B, '<Queue %s><name>IB Supervisor</name><doesSendEmailToMembers>false</doesSendEmailToMembers>' % NS + ''.join('<queueSobject><sobjectType>%s</sobjectType></queueSobject>' % o for o in ['IB_Credit_Adjustment__c', 'IB_Wholesale_Order__c', 'IB_Fallout_Order__c', 'IB_Customer_Notification__c']) + '</Queue>')
 
 # Permission set
-classes = ['IB_TrustPolicy', 'IB_AuditService', 'IB_TmfMockService', 'IB_CheckSlaFeasibility', 'IB_DiagnoseBillShock', 'IB_ProposeRetentionOffer', 'IB_RequestCreditAdjustment', 'IB_ApproveCredit', 'IB_FindCustomer', 'IB_ListPendingCredits']
-objs = ['IB_Intent__c', 'IB_Service_Problem__c', 'IB_Credit_Adjustment__c', 'IB_Agent_Audit_Log__c']
+classes = ['IB_TrustPolicy', 'IB_AuditService', 'IB_TmfMockService', 'IB_CheckSlaFeasibility', 'IB_DiagnoseBillShock', 'IB_ProposeRetentionOffer', 'IB_RequestCreditAdjustment', 'IB_ApproveCredit', 'IB_FindCustomer', 'IB_ListPendingCredits',
+           'IB_DetectOutageImpact', 'IB_NotifyAffected', 'IB_RestoreAndCredit', 'IB_PartnerQualify', 'IB_PartnerOrder', 'IB_SetPartnerKillSwitch', 'IB_RepairFalloutOrder', 'IB_RouteRequest', 'IB_TelcoforceService']
+objs = ['IB_Intent__c', 'IB_Service_Problem__c', 'IB_Credit_Adjustment__c', 'IB_Agent_Audit_Log__c', 'IB_Partner__c', 'IB_Wholesale_Order__c', 'IB_Fallout_Order__c', 'IB_Customer_Notification__c']
 ps = '<PermissionSet %s><label>IB IntentBridge User</label><description>Access to IntentBridge objects, fields, tabs and agent actions.</description><hasActivationRequired>false</hasActivationRequired>' % NS
 ps += ''.join('<classAccesses><apexClass>%s</apexClass><enabled>true</enabled></classAccesses>' % c for c in classes)
 ps += '<customMetadataTypeAccesses><enabled>true</enabled><name>IB_Trust_Policy__mdt</name></customMetadataTypeAccesses>'

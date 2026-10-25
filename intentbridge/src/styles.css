@@ -51,3 +51,6 @@ footer{padding:10px 18px;color:var(--mut);font-size:11.5px}
 .ok{color:var(--ok)}.bad{color:var(--bad)}
 .g2>*,.grid3>*{min-width:0}
 .g2 .t th,.g2 .t td{padding:4px 6px}
+
+.scen .tag.tf{background:#0b5cad}.tfhero{border-left:4px solid #0b5cad}.tfj h3{font-size:14px}.btn.small{font-size:11px;padding:3px 7px}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}.tfhero{margin-bottom:12px}@media (max-width:1000px){.g3{grid-template-columns:1fr}}

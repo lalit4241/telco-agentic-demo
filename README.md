@@ -6,7 +6,7 @@ A self-contained demo of an **agentic working model for telecoms**, written afte
 
 A check of that page — HTTP status, all eight scenarios, one supervisor approval, and the prototype test run — is in [TEST_RESULTS.md](TEST_RESULTS.md).
 
-**IntentBridge demo:** [open `./intentbridge/`](./intentbridge/) ([live](https://lalit4241.github.io/telco-agentic-demo/intentbridge/)) — the AIforce × TM Forum ODA working model, one offline HTML file. Its test record is in [intentbridge/TEST_RESULTS.md](intentbridge/TEST_RESULTS.md).
+**Telcoforce demo (agentic telco on the Salesforce ecosystem):** [open `./intentbridge/`](./intentbridge/) ([live](https://lalit4241.github.io/telco-agentic-demo/intentbridge/)) — network-aware proactive care, wholesale partner agent-to-agent with an Agent Fabric kill switch, order fallout repair with the Systems Integration Agent, and a superagent router, all governed by **IntentBridge** (the AIforce × TM Forum ODA layer). One offline HTML file plus a Salesforce SFDX package (8 Telcoforce invocable actions, 100% Apex coverage). Test record: [intentbridge/TEST_RESULTS.md](intentbridge/TEST_RESULTS.md).
 
 The page at the root (`index.html`) is the offline build: one HTML file, pure JavaScript, no network calls and no API keys. Open that URL, pick one of the eight scenarios (or type a free-text request), and follow the trace — routing, TMF reads and writes, guardrail decisions, customer messages, and supervisor approvals.
 

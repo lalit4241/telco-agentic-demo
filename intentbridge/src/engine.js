@@ -103,6 +103,8 @@
       creditsAutoApplied: 0, creditsPending: 0, creditsApprovedByHuman: 0, sitesChecked: 0, falloutAvoided: 0, piiMasked: 0, a2aMessages: 0, ordersPlaced: 0, minutesSavedIllustrative: 0, evalPassRate: null };
     this.listeners = [];
     this.runs = [];
+    this.killSwitch = {};
+    INIT_HOOKS.forEach(function (f) { f(this); }, this);
   }
   Engine.prototype.now = function () { this.tick += 1; return new Date(BASE_TIME + this.tick * 7000).toISOString(); };
   Engine.prototype.nowMs = function () { return BASE_TIME + this.tick * 7000; };
@@ -190,6 +192,8 @@
 
   var OPS = {};
   function op(def) { OPS[def.tool] = def; }
+  /* Extension points (used by the Telcoforce layer in telcoforce.js) */
+  var INIT_HOOKS = [], POLICY_EXT = {}, KPI_EXT = [];
 
   op({ tool: 'customer.get', tmf: 'TMF629', title: 'Customer Management', oda: 'Party Management', system: 'crm', method: 'GET', write: false,
     desc: 'Retrieve a customer (party role) with contact media and characteristics', sample: { id: 'CUST-1001' },
@@ -543,6 +547,7 @@
   Engine.prototype.policyCheck = function (agentId, def, a, opts) {
     var eng = this, P = this.policy;
     if (opts && opts.approvedBy) return { decision: 'allow', rule: 'HUMAN_APPROVED', reason: 'Approved by ' + opts.approvedBy };
+    if (POLICY_EXT[def.tool]) { var ext = POLICY_EXT[def.tool](eng, agentId, def, a, opts || {}); if (ext) return ext; }
     if (!def.write) return { decision: 'allow', rule: 'READ', reason: 'Read within scope' };
     var custOf = function () { return a.billingAccount ? eng.customerByAccount(a.billingAccount) : (a.customer ? eng.customer(a.customer) : null); };
     var c;
@@ -606,6 +611,8 @@
     };
     var inj = detectInjection(args);
     if (inj.length) return finish(Object.assign(base, { decision: 'deny', rule: 'PROMPT_INJECTION', reason: 'Instruction-like content detected in tool arguments', response: { status: 403, body: { code: 'POLICY_DENIED', reason: 'Prompt injection blocked' } } }));
+    var ks = this.killSwitch[agentId] ? agentId : (args.partner && this.killSwitch[args.partner] ? args.partner : null);
+    if (ks) return finish(Object.assign(base, { decision: 'deny', rule: 'KILL_SWITCH', reason: 'Agent Fabric kill switch is on for ' + ks + ': all calls refused until an operator lifts it', response: { status: 403, body: { code: 'AGENT_ISOLATED', reason: 'Kill switch active for ' + ks } } }));
     var need = def.write ? 'W' : 'R', have = agent.scopes[def.oda];
     if (!have || (need === 'W' && have !== 'W')) return finish(Object.assign(base, { decision: 'deny', rule: 'OUT_OF_SCOPE', reason: agent.name + ' has no ' + (need === 'W' ? 'write' : 'read') + ' scope on ODA component \u201c' + def.oda + '\u201d', response: { status: 403, body: { code: 'SCOPE_DENIED', reason: 'Tool not in agent scope' } } }));
     var pol = this.policyCheck(agentId, def, args, opts);
@@ -1090,7 +1097,7 @@
       { key: 'pii', label: 'PII fields masked', value: String(m.piiMasked) },
       { key: 'audit', label: 'Audit chain', value: au.ok ? au.entries + ' \u2713' : 'BROKEN @' + au.brokenAt },
       { key: 'evals', label: 'Eval pass rate', value: m.evalPassRate === null ? '\u2014' : m.evalPassRate + '%' }
-    ];
+    ].concat([].concat.apply([], KPI_EXT.map(function (f) { return f(m); })));
   };
 
   /* ---------------- CIO value calculator (same defaults as the Page; illustrative) ---------------- */
@@ -1117,6 +1124,9 @@
   function calcDefaults() { var o = {}; CALC_FIELDS.forEach(function (f) { o[f[0]] = f[2]; }); return o; }
 
   var API = { Engine: Engine, AGENTS: AGENTS, SYSTEMS: SYSTEMS, OPS: OPS, JOURNEYS: JOURNEYS, maskPII: maskPII, detectInjection: detectInjection, simSwapRisk: simSwapRisk,
-    calc: calc, calcDefaults: calcDefaults, CALC_FIELDS: CALC_FIELDS, PRESETS: PRESETS, gbp: gbp, sha256: sha256, KIND_LABEL: KIND_LABEL, qualifySite: qualifySite };
+    calc: calc, calcDefaults: calcDefaults, CALC_FIELDS: CALC_FIELDS, PRESETS: PRESETS, gbp: gbp, sha256: sha256, KIND_LABEL: KIND_LABEL, qualifySite: qualifySite,
+    // extension points
+    op: op, H: H, money: money, r2: r2, clone: clone, tmfTicket: tmfTicket, tmfProblem: tmfProblem, ROUTES: ROUTES, EVALS: EVALS,
+    INIT_HOOKS: INIT_HOOKS, POLICY_EXT: POLICY_EXT, KPI_EXT: KPI_EXT, Runner: Runner };
   if (typeof module !== 'undefined' && module.exports) module.exports = API; else root.IntentBridge = API;
 })(typeof self !== 'undefined' ? self : this);

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+  <label>IB Customer Notification</label><pluralLabel>IB Customer Notifications</pluralLabel><nameField><label>Notification Number</label><type>AutoNumber</type><displayFormat>CN-{00000}</displayFormat><startingNumber>1</startingNumber></nameField>
+  <description>TMF681 proactive message about a network event. Vulnerable customers get a call from a person instead.</description>
+  <deploymentStatus>Deployed</deploymentStatus><sharingModel>ReadWrite</sharingModel>
+  <enableActivities>false</enableActivities><enableHistory>true</enableHistory><enableReports>true</enableReports><enableSearch>true</enableSearch>
+  <enableBulkApi>true</enableBulkApi><enableSharing>true</enableSharing><enableStreamingApi>true</enableStreamingApi>
+</CustomObject>

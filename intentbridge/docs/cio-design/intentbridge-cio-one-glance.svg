@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" style="font-feature-settings:'cv08' 1"><title>IntentBridge at a glance</title><defs>
+<marker id="ag" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5B6573"/></marker>
+<marker id="aa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9A5B00"/></marker>
+<marker id="at" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0E7C7B"/></marker>
+<filter id="sh" x="-5%" y="-5%" width="110%" height="120%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F1F33" flood-opacity="0.10"/></filter>
+</defs><rect width="1920" height="1080" fill="#FFFFFF"/><text x="60" y="64" font-size="42" font-weight="800" fill="#0F1F33" text-anchor="start">IntentBridge — the headless agent layer for telcos</text>
+<text x="60" y="102" font-size="23" font-weight="400" fill="#4A5568" text-anchor="start">AIforce agents act across BSS/OSS through governed TM Forum Open APIs</text>
+<rect x="1460" y="40" width="400" height="46" rx="23" fill="#FFF6E3" stroke="#E8A317" stroke-width="1.5" />
+<text x="1660.0" y="70" font-size="20" font-weight="700" fill="#9A5B00" text-anchor="middle">Headless by design · no new screens</text>
+<rect x="60" y="136" width="1800" height="160" rx="16" fill="#FFFFFF" stroke="#3B4B5F" stroke-width="2.5" />
+<rect x="60" y="136" width="420" height="160" rx="16" fill="#3B4B5F" stroke="none" stroke-width="1.5" />
+<rect x="460" y="136" width="20" height="160" rx="0" fill="#3B4B5F" stroke="none" stroke-width="1.5" />
+<text x="96" y="208" font-size="38" font-weight="800" fill="#FFFFFF" text-anchor="start">People &amp; channels</text>
+<text x="96" y="250" font-size="24" font-weight="500" fill="#FFFFFF" text-anchor="start">Engage, headless</text>
+<text x="520" y="206" font-size="31" font-weight="700" fill="#0F1F33" text-anchor="start">Slackforce, Coworker, Salesforce consoles, customer app &amp; IVR</text>
+<text x="520" y="250" font-size="24" font-weight="400" fill="#4A5568" text-anchor="start">No new screen: agents work where people already work</text>
+<line x1="700" y1="300" x2="700" y2="318" stroke="#5B6573" stroke-width="3" marker-end="url(#ag)" marker-start="url(#ag)"/>
+<line x1="1260" y1="300" x2="1260" y2="318" stroke="#5B6573" stroke-width="3" marker-end="url(#ag)" marker-start="url(#ag)"/>
+<rect x="60" y="322" width="1800" height="160" rx="16" fill="#EAF3FC" stroke="#0B5CAB" stroke-width="2.5" />
+<rect x="60" y="322" width="420" height="160" rx="16" fill="#0B5CAB" stroke="none" stroke-width="1.5" />
+<rect x="460" y="322" width="20" height="160" rx="0" fill="#0B5CAB" stroke="none" stroke-width="1.5" />
+<text x="96" y="394" font-size="38" font-weight="800" fill="#FFFFFF" text-anchor="start">AIforce agents</text>
+<text x="96" y="436" font-size="24" font-weight="500" fill="#FFFFFF" text-anchor="start">Think &amp; act</text>
+<text x="520" y="392" font-size="31" font-weight="700" fill="#0F1F33" text-anchor="start">A Superagent front door plus specialist agents</text>
+<text x="520" y="436" font-size="24" font-weight="400" fill="#4A5568" text-anchor="start">Quoting, care &amp; billing, retention, NOC, field ops, catalogue · A2A to network agents</text>
+<line x1="700" y1="486" x2="700" y2="504" stroke="#5B6573" stroke-width="3" marker-end="url(#ag)" marker-start="url(#ag)"/>
+<line x1="1260" y1="486" x2="1260" y2="504" stroke="#5B6573" stroke-width="3" marker-end="url(#ag)" marker-start="url(#ag)"/>
+<rect x="60" y="508" width="1800" height="160" rx="16" fill="#E6F4F3" stroke="#0E7C7B" stroke-width="2.5" />
+<rect x="60" y="508" width="420" height="160" rx="16" fill="#0E7C7B" stroke="none" stroke-width="1.5" />
+<rect x="460" y="508" width="20" height="160" rx="0" fill="#0E7C7B" stroke="none" stroke-width="1.5" />
+<text x="96" y="580" font-size="38" font-weight="800" fill="#FFFFFF" text-anchor="start">IntentBridge</text>
+<text x="96" y="622" font-size="24" font-weight="500" fill="#FFFFFF" text-anchor="start">Govern &amp; connect</text>
+<text x="520" y="578" font-size="31" font-weight="700" fill="#0F1F33" text-anchor="start">TM Forum Open APIs as governed tools on MuleSoft Agent Fabric</text>
+<text x="520" y="622" font-size="24" font-weight="400" fill="#4A5568" text-anchor="start">Trust pack: credit cap, vulnerable-customer &amp; SIM-swap holds, PII masking, audit</text>
+<rect x="60" y="694" width="1800" height="66" rx="12" fill="#F4F5F7" stroke="#D5D9E0" stroke-width="1.5" />
+<text x="96" y="737" font-size="24" text-anchor="start"><tspan font-weight="800" fill="#0F1F33">Existing BSS / OSS, CRM and network domains  </tspan><tspan font-weight="400" fill="#4A5568">mapped to ODA layers, unchanged: no rip &amp; replace</tspan></text>
+<rect x="60.0" y="788" width="435.0" height="128" rx="14" fill="#FFFFFF" stroke="#0F1F33" stroke-width="2.5" />
+<rect x="60.0" y="788" width="10" height="128" rx="5" fill="#0E7C7B" stroke="none" stroke-width="1.5" />
+<text x="282.5" y="863" font-size="30" font-weight="800" fill="#0F1F33" text-anchor="middle">Lower cost to serve</text>
+<rect x="515.0" y="788" width="435.0" height="128" rx="14" fill="#FFFFFF" stroke="#0F1F33" stroke-width="2.5" />
+<rect x="515.0" y="788" width="10" height="128" rx="5" fill="#0E7C7B" stroke="none" stroke-width="1.5" />
+<text x="737.5" y="863" font-size="30" font-weight="800" fill="#0F1F33" text-anchor="middle">Revenue protection</text>
+<rect x="970.0" y="788" width="435.0" height="128" rx="14" fill="#FFFFFF" stroke="#0F1F33" stroke-width="2.5" />
+<rect x="970.0" y="788" width="10" height="128" rx="5" fill="#0E7C7B" stroke="none" stroke-width="1.5" />
+<text x="1192.5" y="863" font-size="30" font-weight="800" fill="#0F1F33" text-anchor="middle">Faster B2B quote-to-cash</text>
+<rect x="1425.0" y="788" width="435.0" height="128" rx="14" fill="#FFFFFF" stroke="#0F1F33" stroke-width="2.5" />
+<rect x="1425.0" y="788" width="10" height="128" rx="5" fill="#0E7C7B" stroke="none" stroke-width="1.5" />
+<text x="1647.5" y="863" font-size="30" font-weight="800" fill="#0F1F33" text-anchor="middle">Resilience &amp; compliance</text>
+<text x="960" y="976" font-size="22" font-weight="500" fill="#4A5568" text-anchor="middle">Designed for Ofcom, GDPR, EU AI Act and TSA duties: policy as code, human oversight, hash-chained audit</text>
+<rect x="1070" y="1026" width="790" height="42" rx="21" fill="#E6F4F3" stroke="#0E7C7B" stroke-width="1.5" />
+<text x="1465.0" y="1054" font-size="18" font-weight="700" fill="#075E5D" text-anchor="middle">✓ Proven in a working model: 16/16 Apex tests · 100% coverage · live demo</text></svg>

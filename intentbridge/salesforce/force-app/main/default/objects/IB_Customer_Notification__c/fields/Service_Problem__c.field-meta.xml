@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata"><fullName>Service_Problem__c</fullName><label>Service Problem</label><type>Lookup</type><referenceTo>IB_Service_Problem__c</referenceTo><relationshipName>Notifications</relationshipName><deleteConstraint>SetNull</deleteConstraint></CustomField>

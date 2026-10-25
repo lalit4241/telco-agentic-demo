@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+  <label>IB Wholesale Partner</label><pluralLabel>IB Wholesale Partners</pluralLabel><nameField><label>Partner Name</label><type>Text</type></nameField>
+  <description>TMF668 wholesale partner and its agreement. The partner's own agent calls in over A2A; the agreement meters what it may do.</description>
+  <deploymentStatus>Deployed</deploymentStatus><sharingModel>ReadWrite</sharingModel>
+  <enableActivities>false</enableActivities><enableHistory>true</enableHistory><enableReports>true</enableReports><enableSearch>true</enableSearch>
+  <enableBulkApi>true</enableBulkApi><enableSharing>true</enableSharing><enableStreamingApi>true</enableStreamingApi>
+</CustomObject>

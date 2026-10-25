@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" style="font-feature-settings:'cv08' 1"><title>IntentBridge — the headless agent layer for telcos</title><defs>
+<marker id="ag" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5B6573"/></marker>
+<marker id="aa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9A5B00"/></marker>
+<marker id="at" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0E7C7B"/></marker>
+<filter id="sh" x="-5%" y="-5%" width="110%" height="120%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F1F33" flood-opacity="0.10"/></filter>
+</defs><rect width="1920" height="1080" fill="#FFFFFF"/><text x="60" y="64" font-size="42" font-weight="800" fill="#0F1F33" text-anchor="start">IntentBridge — the headless agent layer for telcos</text>
+<text x="60" y="102" font-size="23" font-weight="400" fill="#4A5568" text-anchor="start">AIforce agents act across BSS/OSS through governed TM Forum Open APIs</text>
+<rect x="1460" y="40" width="400" height="46" rx="23" fill="#FFF6E3" stroke="#E8A317" stroke-width="1.5" />
+<text x="1660.0" y="70" font-size="20" font-weight="700" fill="#9A5B00" text-anchor="middle">Headless by design · no new screens</text>
+<rect x="60" y="124" width="196" height="116" rx="12" fill="#3B4B5F" stroke="none" stroke-width="1.5" />
+<circle cx="88" cy="154" r="15" fill="#FFFFFF" fill-opacity="0.25"/>
+<text x="88" y="160" font-size="18" font-weight="800" fill="#FFFFFF" text-anchor="middle">1</text>
+<text x="110" y="161" font-size="21" font-weight="800" fill="#FFFFFF" text-anchor="start">Engage</text>
+<text x="76" y="190" font-size="18" font-weight="500" fill="#FFFFFF" text-anchor="start">headless:</text>
+<text x="76" y="213" font-size="18" font-weight="500" fill="#FFFFFF" text-anchor="start">no new screen</text>
+<rect x="270" y="124" width="1590" height="116" rx="12" fill="#FFFFFF" stroke="#D5D9E0" stroke-width="1.5" />
+<text x="288" y="164" font-size="18" font-weight="700" fill="#4A5568" text-anchor="start">Channels</text>
+<rect x="400" y="138" width="150" height="40" rx="8" fill="#FFFFFF" stroke="#9AA5B4" stroke-width="1.5" />
+<text x="475.0" y="164.84" font-size="19" font-weight="600" fill="#0F1F33" text-anchor="middle">Slackforce</text>
+<rect x="562" y="138" width="220" height="40" rx="8" fill="#FFFFFF" stroke="#9AA5B4" stroke-width="1.5" />
+<text x="672.0" y="164.84" font-size="19" font-weight="600" fill="#0F1F33" text-anchor="middle">Claudeforce (beta)</text>
+<rect x="794" y="138" width="240" height="40" rx="8" fill="#FFFFFF" stroke="#9AA5B4" stroke-width="1.5" />
+<text x="914.0" y="164.84" font-size="19" font-weight="600" fill="#0F1F33" text-anchor="middle">Agentforce Coworker</text>
+<rect x="1046" y="138" width="380" height="40" rx="8" fill="#FFFFFF" stroke="#9AA5B4" stroke-width="1.5" />
+<text x="1236.0" y="164.84" font-size="19" font-weight="600" fill="#0F1F33" text-anchor="middle">Salesforce Service &amp; Sales consoles</text>
+<rect x="1438" y="138" width="230" height="40" rx="8" fill="#FFFFFF" stroke="#9AA5B4" stroke-width="1.5" />
+<text x="1553.0" y="164.84" font-size="19" font-weight="600" fill="#0F1F33" text-anchor="middle">Customer app / IVR</text>
+<text x="288" y="218" font-size="18" font-weight="700" fill="#4A5568" text-anchor="start">Personas</text>
+<rect x="400" y="190" width="160" height="38" rx="19" fill="#F4F5F7" stroke="none" stroke-width="1.5" />
+<text x="480.0" y="215.48" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="middle">Care adviser</text>
+<rect x="572" y="190" width="240" height="38" rx="19" fill="#F4F5F7" stroke="none" stroke-width="1.5" />
+<text x="692.0" y="215.48" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="middle">B2B account manager</text>
+<rect x="824" y="190" width="170" height="38" rx="19" fill="#F4F5F7" stroke="none" stroke-width="1.5" />
+<text x="909.0" y="215.48" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="middle">NOC engineer</text>
+<rect x="1006" y="190" width="130" height="38" rx="19" fill="#F4F5F7" stroke="none" stroke-width="1.5" />
+<text x="1071.0" y="215.48" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="middle">Field ops</text>
+<rect x="1148" y="190" width="200" height="38" rx="19" fill="#F4F5F7" stroke="none" stroke-width="1.5" />
+<text x="1248.0" y="215.48" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="middle">Product manager</text>
+<rect x="1360" y="190" width="130" height="38" rx="19" fill="#F4F5F7" stroke="none" stroke-width="1.5" />
+<text x="1425.0" y="215.48" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="middle">Customer</text>
+<rect x="60" y="256" width="196" height="122" rx="12" fill="#0B5CAB" stroke="none" stroke-width="1.5" />
+<circle cx="88" cy="286" r="15" fill="#FFFFFF" fill-opacity="0.25"/>
+<text x="88" y="292" font-size="18" font-weight="800" fill="#FFFFFF" text-anchor="middle">2</text>
+<text x="110" y="293" font-size="21" font-weight="800" fill="#FFFFFF" text-anchor="start">AIforce</text>
+<text x="76" y="322" font-size="18" font-weight="500" fill="#FFFFFF" text-anchor="start">agents</text>
+<rect x="270" y="256" width="1310" height="122" rx="12" fill="#EAF3FC" stroke="#0B5CAB" stroke-width="1.5" />
+<rect x="282" y="268" width="236" height="98" rx="10" fill="#0B5CAB" stroke="none" stroke-width="1.5" filter="url(#sh)"/>
+<text x="400" y="310" font-size="25" font-weight="800" fill="#FFFFFF" text-anchor="middle">Superagent</text>
+<text x="400" y="340" font-size="18" font-weight="500" fill="#FFFFFF" text-anchor="middle">front door · A2A</text>
+<rect x="532" y="268" width="252" height="44" rx="8" fill="#FFFFFF" stroke="#0B5CAB" stroke-width="1.5" />
+<text x="658.0" y="296.84" font-size="19" font-weight="700" fill="#06417A" text-anchor="middle">Quoting &amp; feasibility</text>
+<rect x="794" y="268" width="252" height="44" rx="8" fill="#FFFFFF" stroke="#0B5CAB" stroke-width="1.5" />
+<text x="920.0" y="296.84" font-size="19" font-weight="700" fill="#06417A" text-anchor="middle">Care &amp; billing</text>
+<rect x="1056" y="268" width="252" height="44" rx="8" fill="#FFFFFF" stroke="#0B5CAB" stroke-width="1.5" />
+<text x="1182.0" y="296.84" font-size="19" font-weight="700" fill="#06417A" text-anchor="middle">Retention</text>
+<rect x="1318" y="268" width="252" height="44" rx="8" fill="#FFFFFF" stroke="#0B5CAB" stroke-width="1.5" />
+<text x="1444.0" y="296.84" font-size="19" font-weight="700" fill="#06417A" text-anchor="middle">NOC copilot</text>
+<rect x="532" y="322" width="252" height="44" rx="8" fill="#FFFFFF" stroke="#0B5CAB" stroke-width="1.5" />
+<text x="658.0" y="350.84" font-size="19" font-weight="700" fill="#06417A" text-anchor="middle">Field ops</text>
+<rect x="794" y="322" width="252" height="44" rx="8" fill="#FFFFFF" stroke="#0B5CAB" stroke-width="1.5" />
+<text x="920.0" y="350.84" font-size="19" font-weight="700" fill="#06417A" text-anchor="middle">Product &amp; catalogue</text>
+<rect x="1056" y="322" width="514" height="44" rx="8" fill="#EAF3FC" stroke="#0B5CAB" stroke-width="1.5" stroke-dasharray="6 5" />
+<text x="1313.0" y="350.84" font-size="19" font-weight="600" fill="#06417A" text-anchor="middle">Network-domain agents  ·  via A2A</text>
+<rect x="60" y="394" width="196" height="222" rx="12" fill="#0E7C7B" stroke="none" stroke-width="1.5" />
+<circle cx="88" cy="424" r="15" fill="#FFFFFF" fill-opacity="0.25"/>
+<text x="88" y="430" font-size="18" font-weight="800" fill="#FFFFFF" text-anchor="middle">3</text>
+<text x="110" y="431" font-size="21" font-weight="800" fill="#FFFFFF" text-anchor="start">IntentBridge</text>
+<text x="76" y="460" font-size="18" font-weight="500" fill="#FFFFFF" text-anchor="start">headless agent</text>
+<text x="76" y="483" font-size="18" font-weight="500" fill="#FFFFFF" text-anchor="start">layer on MuleSoft</text>
+<text x="76" y="506" font-size="18" font-weight="500" fill="#FFFFFF" text-anchor="start">Agent Fabric</text>
+<rect x="270" y="394" width="1310" height="222" rx="12" fill="#E6F4F3" stroke="#0E7C7B" stroke-width="1.5" />
+<rect x="282.0" y="406" width="422.0" height="74" rx="10" fill="#FFFFFF" stroke="#0E7C7B" stroke-width="1.5" />
+<text x="298.0" y="438" font-size="20" font-weight="800" fill="#075E5D" text-anchor="start">TMF Open APIs as governed MCP tools</text>
+<text x="298.0" y="466" font-size="18" font-weight="400" fill="#0F1F33" text-anchor="start">agents call tools, never systems directly</text>
+<rect x="714.0" y="406" width="422.0" height="74" rx="10" fill="#FFFFFF" stroke="#0E7C7B" stroke-width="1.5" />
+<text x="730.0" y="438" font-size="20" font-weight="800" fill="#075E5D" text-anchor="start">Scoped access per ODA component</text>
+<text x="730.0" y="466" font-size="18" font-weight="400" fill="#0F1F33" text-anchor="start">least privilege for every agent</text>
+<rect x="1146.0" y="406" width="422.0" height="74" rx="10" fill="#FFFFFF" stroke="#0E7C7B" stroke-width="1.5" />
+<text x="1162.0" y="438" font-size="20" font-weight="800" fill="#075E5D" text-anchor="start">TMF921 intent hand-off</text>
+<text x="1162.0" y="466" font-size="18" font-weight="400" fill="#0F1F33" text-anchor="start">probe → assess → activate with networks</text>
+<rect x="282" y="492" width="1286" height="112" rx="10" fill="#FFF6E3" stroke="#E8A317" stroke-width="2" />
+<text x="300" y="540" font-size="22" font-weight="800" fill="#9A5B00" text-anchor="start">Trust pack</text>
+<text x="300" y="568" font-size="18" font-weight="500" fill="#9A5B00" text-anchor="start">policy as code</text>
+<rect x="460" y="504" width="362" height="40" rx="8" fill="#FFFFFF" stroke="#E8A317" stroke-width="1.5" />
+<text x="641.0" y="530.84" font-size="19" font-weight="600" fill="#0F1F33" text-anchor="middle">£50 credit cap → supervisor</text>
+<rect x="832" y="504" width="362" height="40" rx="8" fill="#FFFFFF" stroke="#E8A317" stroke-width="1.5" />
+<text x="1013.0" y="530.84" font-size="19" font-weight="600" fill="#0F1F33" text-anchor="middle">Vulnerable customer → human</text>
+<rect x="1204" y="504" width="362" height="40" rx="8" fill="#FFFFFF" stroke="#E8A317" stroke-width="1.5" />
+<text x="1385.0" y="530.84" font-size="19" font-weight="600" fill="#0F1F33" text-anchor="middle">SIM-swap risk hold</text>
+<rect x="460" y="552" width="362" height="40" rx="8" fill="#FFFFFF" stroke="#E8A317" stroke-width="1.5" />
+<text x="641.0" y="578.84" font-size="19" font-weight="600" fill="#0F1F33" text-anchor="middle">PII masking</text>
+<rect x="832" y="552" width="362" height="40" rx="8" fill="#FFFFFF" stroke="#E8A317" stroke-width="1.5" />
+<text x="1013.0" y="578.84" font-size="19" font-weight="600" fill="#0F1F33" text-anchor="middle">Hash-chained audit</text>
+<rect x="1204" y="552" width="362" height="40" rx="8" fill="#FFFFFF" stroke="#E8A317" stroke-width="1.5" />
+<text x="1385.0" y="578.84" font-size="19" font-weight="600" fill="#0F1F33" text-anchor="middle">Agent Evals release gate</text>
+<rect x="1602" y="256" width="258" height="360" rx="12" fill="#FFF6E3" stroke="#E8A317" stroke-width="2" />
+<text x="1731.0" y="292" font-size="21" font-weight="800" fill="#9A5B00" text-anchor="middle">Human in the loop</text>
+<rect x="1616" y="308" width="230" height="40" rx="8" fill="#E8A317" stroke="none" stroke-width="1.5" />
+<text x="1731.0" y="335" font-size="19" font-weight="800" fill="#FFFFFF" text-anchor="middle">Supervisor queue</text>
+<circle cx="1626" cy="378" r="4" fill="#9A5B00"/>
+<text x="1638" y="384" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="start">Credits over £50</text>
+<circle cx="1626" cy="410" r="4" fill="#9A5B00"/>
+<text x="1638" y="416" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="start">Vulnerable customers</text>
+<circle cx="1626" cy="442" r="4" fill="#9A5B00"/>
+<text x="1638" y="448" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="start">SIM-swap holds</text>
+<circle cx="1626" cy="474" r="4" fill="#9A5B00"/>
+<text x="1638" y="480" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="start">Customer consent</text>
+<circle cx="1626" cy="506" r="4" fill="#9A5B00"/>
+<text x="1638" y="512" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="start">AM sign-off on quotes</text>
+<text x="1731.0" y="594" font-size="18" font-weight="600" fill="#9A5B00" text-anchor="middle">approve / reject → audited</text>
+<line x1="1568" y1="548" x2="1598" y2="548" stroke="#9A5B00" stroke-width="2.5" marker-end="url(#aa)" marker-start="url(#aa)"/>
+<line x1="520" y1="242" x2="520" y2="254" stroke="#5B6573" stroke-width="2.5" marker-end="url(#ag)" marker-start="url(#ag)"/>
+<line x1="520" y1="380" x2="520" y2="392" stroke="#5B6573" stroke-width="2.5" marker-end="url(#ag)" marker-start="url(#ag)"/>
+<line x1="520" y1="618" x2="520" y2="630" stroke="#5B6573" stroke-width="2.5" marker-end="url(#ag)" marker-start="url(#ag)"/>
+<line x1="1065" y1="242" x2="1065" y2="254" stroke="#5B6573" stroke-width="2.5" marker-end="url(#ag)" marker-start="url(#ag)"/>
+<line x1="1065" y1="380" x2="1065" y2="392" stroke="#5B6573" stroke-width="2.5" marker-end="url(#ag)" marker-start="url(#ag)"/>
+<line x1="1065" y1="618" x2="1065" y2="630" stroke="#5B6573" stroke-width="2.5" marker-end="url(#ag)" marker-start="url(#ag)"/>
+<line x1="1420" y1="242" x2="1420" y2="254" stroke="#5B6573" stroke-width="2.5" marker-end="url(#ag)" marker-start="url(#ag)"/>
+<line x1="1420" y1="380" x2="1420" y2="392" stroke="#5B6573" stroke-width="2.5" marker-end="url(#ag)" marker-start="url(#ag)"/>
+<line x1="1420" y1="618" x2="1420" y2="630" stroke="#5B6573" stroke-width="2.5" marker-end="url(#ag)" marker-start="url(#ag)"/>
+<rect x="60" y="632" width="196" height="228" rx="12" fill="#5B6573" stroke="none" stroke-width="1.5" />
+<circle cx="88" cy="662" r="15" fill="#FFFFFF" fill-opacity="0.25"/>
+<text x="88" y="668" font-size="18" font-weight="800" fill="#FFFFFF" text-anchor="middle">4</text>
+<text x="110" y="669" font-size="21" font-weight="800" fill="#FFFFFF" text-anchor="start">Systems</text>
+<text x="76" y="698" font-size="18" font-weight="500" fill="#FFFFFF" text-anchor="start">of record,</text>
+<text x="76" y="721" font-size="18" font-weight="500" fill="#FFFFFF" text-anchor="start">mapped to ODA</text>
+<text x="76" y="744" font-size="18" font-weight="500" fill="#FFFFFF" text-anchor="start">layers</text>
+<text x="76" y="824" font-size="18" font-weight="500" fill="#FFFFFF" text-anchor="start">unchanged:</text>
+<text x="76" y="847" font-size="18" font-weight="500" fill="#FFFFFF" text-anchor="start">no rip &amp; replace</text>
+<rect x="270" y="632" width="1590" height="228" rx="12" fill="#F4F5F7" stroke="#D5D9E0" stroke-width="1.5" />
+<rect x="282" y="644" width="221.3138686131387" height="204" rx="10" fill="#FFFFFF" stroke="#D5D9E0" stroke-width="1.5" />
+<rect x="282" y="644" width="221.3138686131387" height="6" rx="3" fill="#5B6573" stroke="none" stroke-width="1.5" />
+<text x="298" y="682" font-size="21" font-weight="800" fill="#0F1F33" text-anchor="start">Party</text>
+<text x="298" y="716" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="start">Comms Cloud CRM</text>
+<text x="298" y="742" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="start">customer &amp; account</text>
+<text x="298" y="780" font-size="18" font-weight="700" fill="#075E5D" text-anchor="start">TMF629 · TMF666</text>
+<rect x="513.3138686131388" y="644" width="221.3138686131387" height="204" rx="10" fill="#FFFFFF" stroke="#D5D9E0" stroke-width="1.5" />
+<rect x="513.3138686131388" y="644" width="221.3138686131387" height="6" rx="3" fill="#5B6573" stroke="none" stroke-width="1.5" />
+<text x="529.3138686131388" y="682" font-size="21" font-weight="800" fill="#0F1F33" text-anchor="start">Core Commerce</text>
+<text x="529.3138686131388" y="716" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="start">CPQ · catalogue</text>
+<text x="529.3138686131388" y="742" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="start">order capture</text>
+<text x="529.3138686131388" y="780" font-size="18" font-weight="700" fill="#075E5D" text-anchor="start">TMF620 · TMF648</text>
+<text x="529.3138686131388" y="806" font-size="18" font-weight="700" fill="#075E5D" text-anchor="start">TMF622 · TMF679</text>
+<rect x="744.6277372262775" y="644" width="221.3138686131387" height="204" rx="10" fill="#FFFFFF" stroke="#D5D9E0" stroke-width="1.5" />
+<rect x="744.6277372262775" y="644" width="221.3138686131387" height="6" rx="3" fill="#5B6573" stroke="none" stroke-width="1.5" />
+<text x="760.6277372262775" y="682" font-size="21" font-weight="800" fill="#0F1F33" text-anchor="start">Billing</text>
+<text x="760.6277372262775" y="716" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="start">BSS billing</text>
+<text x="760.6277372262775" y="742" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="start">&amp; adjustments</text>
+<text x="760.6277372262775" y="780" font-size="18" font-weight="700" fill="#075E5D" text-anchor="start">TMF678 · TMF677</text>
+<rect x="975.9416058394163" y="644" width="409.4306569343066" height="204" rx="10" fill="#FFFFFF" stroke="#D5D9E0" stroke-width="1.5" />
+<rect x="975.9416058394163" y="644" width="409.4306569343066" height="6" rx="3" fill="#5B6573" stroke="none" stroke-width="1.5" />
+<text x="991.9416058394163" y="682" font-size="21" font-weight="800" fill="#0F1F33" text-anchor="start">Production</text>
+<text x="991.9416058394163" y="712" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="start">OSS inventory &amp; orchestration</text>
+<text x="1369.372262773723" y="738" font-size="18" font-weight="700" fill="#075E5D" text-anchor="end">TMF638 · TMF639 · TMF641</text>
+<text x="991.9416058394163" y="772" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="start">Assurance</text>
+<text x="1369.372262773723" y="772" font-size="18" font-weight="700" fill="#075E5D" text-anchor="end">TMF656 · TMF642</text>
+<text x="991.9416058394163" y="800" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="start">ITSM</text>
+<text x="1369.372262773723" y="800" font-size="18" font-weight="700" fill="#075E5D" text-anchor="end">TMF621</text>
+<text x="991.9416058394163" y="828" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="start">Field Service</text>
+<text x="1369.372262773723" y="828" font-size="18" font-weight="700" fill="#075E5D" text-anchor="end">TMF646</text>
+<rect x="1395.372262773723" y="644" width="221.3138686131387" height="204" rx="10" fill="#FFFFFF" stroke="#D5D9E0" stroke-width="1.5" />
+<rect x="1395.372262773723" y="644" width="221.3138686131387" height="6" rx="3" fill="#5B6573" stroke="none" stroke-width="1.5" />
+<text x="1411.372262773723" y="682" font-size="21" font-weight="800" fill="#0F1F33" text-anchor="start">Network domains</text>
+<text x="1411.372262773723" y="716" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="start">Autonomous networks</text>
+<text x="1411.372262773723" y="742" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="start">intent handler</text>
+<text x="1411.372262773723" y="780" font-size="18" font-weight="700" fill="#075E5D" text-anchor="start">TMF921</text>
+<text x="1411.372262773723" y="834" font-size="18" font-weight="500" fill="#06417A" text-anchor="start">← A2A agents</text>
+<rect x="1626.6861313868617" y="644" width="221.3138686131387" height="204" rx="10" fill="#FFFFFF" stroke="#D5D9E0" stroke-width="1.5" />
+<rect x="1626.6861313868617" y="644" width="221.3138686131387" height="6" rx="3" fill="#5B6573" stroke="none" stroke-width="1.5" />
+<text x="1642.6861313868617" y="682" font-size="21" font-weight="800" fill="#0F1F33" text-anchor="start">Intelligence</text>
+<text x="1642.6861313868617" y="716" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="start">Data 360</text>
+<text x="1642.6861313868617" y="742" font-size="18" font-weight="500" fill="#0F1F33" text-anchor="start">unified data &amp; signals</text>
+<rect x="60" y="876" width="196" height="132" rx="12" fill="#0F1F33" stroke="none" stroke-width="1.5" />
+<circle cx="88" cy="906" r="15" fill="#FFFFFF" fill-opacity="0.25"/>
+<text x="88" y="912" font-size="18" font-weight="800" fill="#FFFFFF" text-anchor="middle">5</text>
+<text x="110" y="913" font-size="21" font-weight="800" fill="#FFFFFF" text-anchor="start">Outcomes</text>
+<text x="76" y="942" font-size="18" font-weight="500" fill="#FFFFFF" text-anchor="start">for the CIO</text>
+<rect x="270.0" y="876" width="387.0" height="132" rx="12" fill="#FFFFFF" stroke="#0F1F33" stroke-width="2" />
+<rect x="270.0" y="876" width="8" height="132" rx="4" fill="#0E7C7B" stroke="none" stroke-width="1.5" />
+<text x="296.0" y="918" font-size="23" font-weight="800" fill="#0F1F33" text-anchor="start">Lower cost to serve</text>
+<text x="296.0" y="952" font-size="18" font-weight="400" fill="#4A5568" text-anchor="start">Bills, credits and faults resolved</text>
+<text x="296.0" y="978" font-size="18" font-weight="400" fill="#4A5568" text-anchor="start">in the tools people already use</text>
+<rect x="671.0" y="876" width="387.0" height="132" rx="12" fill="#FFFFFF" stroke="#0F1F33" stroke-width="2" />
+<rect x="671.0" y="876" width="8" height="132" rx="4" fill="#0E7C7B" stroke="none" stroke-width="1.5" />
+<text x="697.0" y="918" font-size="23" font-weight="800" fill="#0F1F33" text-anchor="start">Revenue protection</text>
+<text x="697.0" y="952" font-size="18" font-weight="400" fill="#4A5568" text-anchor="start">Retention offers within authority;</text>
+<text x="697.0" y="978" font-size="18" font-weight="400" fill="#4A5568" text-anchor="start">credits governed by policy</text>
+<rect x="1072.0" y="876" width="387.0" height="132" rx="12" fill="#FFFFFF" stroke="#0F1F33" stroke-width="2" />
+<rect x="1072.0" y="876" width="8" height="132" rx="4" fill="#0E7C7B" stroke="none" stroke-width="1.5" />
+<text x="1098.0" y="918" font-size="23" font-weight="800" fill="#0F1F33" text-anchor="start">Faster B2B quote-to-cash</text>
+<text x="1098.0" y="952" font-size="18" font-weight="400" fill="#4A5568" text-anchor="start">Feasibility proven by TMF921</text>
+<text x="1098.0" y="978" font-size="18" font-weight="400" fill="#4A5568" text-anchor="start">probe before the quote</text>
+<rect x="1473.0" y="876" width="387.0" height="132" rx="12" fill="#FFFFFF" stroke="#0F1F33" stroke-width="2" />
+<rect x="1473.0" y="876" width="8" height="132" rx="4" fill="#0E7C7B" stroke="none" stroke-width="1.5" />
+<text x="1499.0" y="918" font-size="23" font-weight="800" fill="#0F1F33" text-anchor="start">Resilience &amp; compliance</text>
+<text x="1499.0" y="952" font-size="18" font-weight="400" fill="#4A5568" text-anchor="start">Ofcom · GDPR · EU AI Act · TSA</text>
+<text x="1499.0" y="978" font-size="18" font-weight="400" fill="#4A5568" text-anchor="start">human oversight, full audit trail</text>
+<text x="60" y="1056" font-size="18" font-weight="400" fill="#4A5568" text-anchor="start">TMF = TM Forum Open API · ODA = Open Digital Architecture · A2A = agent-to-agent</text>
+<rect x="1070" y="1028" width="790" height="40" rx="20" fill="#E6F4F3" stroke="#0E7C7B" stroke-width="1.5" />
+<text x="1465.0" y="1055" font-size="18" font-weight="700" fill="#075E5D" text-anchor="middle">✓ Proven in a working model: 16/16 Apex tests · 100% coverage · live demo</text></svg>

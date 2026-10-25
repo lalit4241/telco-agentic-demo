@@ -1,0 +1,66 @@
+# Apex tests after the Telcoforce deploy (deploy 0Afg800000IysxdCAB, validate 0Afg800000IybdSCAR), run 707g800000rIYIL
+# 20 test methods (16 IntentBridge + 4 Telcoforce) + 2 @TestSetup methods (the CLI counts these in 'Tests Ran')
+
+=== Test Results
+TEST NAME                                                            OUTCOME  MESSAGE  RUNTIME (MS)
+───────────────────────────────────────────────────────────────────  ───────  ───────  ────────────
+IB_Telcoforce_Test.falloutRepair                                     Pass              1283        
+IB_Telcoforce_Test.proactiveCareEndToEnd                             Pass              785         
+IB_Telcoforce_Test.superagentRouting                                 Pass              271         
+IB_Telcoforce_Test.wholesalePartnerA2A                               Pass              567         
+IB_IntentBridge_Test.auditChainVerifiesAndDetectsTampering           Pass              139         
+IB_IntentBridge_Test.billShockLinksNetworkFault                      Pass              68          
+IB_IntentBridge_Test.billShockOtherCases                             Pass              125         
+IB_IntentBridge_Test.billShockWithoutFaultSuggestsNoCredit           Pass              82          
+IB_IntentBridge_Test.creditAboveCapGoesToSupervisorAndCanBeApproved  Pass              272         
+IB_IntentBridge_Test.creditWithinCapIsApplied                        Pass              86          
+IB_IntentBridge_Test.findCustomerByIdNameAndAmbiguity                Pass              46          
+IB_IntentBridge_Test.invalidCreditRequestIsRejected                  Pass              15          
+IB_IntentBridge_Test.listPendingCreditsShowsHeldItems                Pass              102         
+IB_IntentBridge_Test.policyOverrideChangesCap                        Pass              72          
+IB_IntentBridge_Test.retentionOffers                                 Pass              147         
+IB_IntentBridge_Test.simSwapRiskHoldsCreditForStepUp                 Pass              88          
+IB_IntentBridge_Test.slaFeasibilityFlagsThreeSites                   Pass              144         
+IB_IntentBridge_Test.slaFeasibilityWithSiteListAndDefaults           Pass              139         
+IB_IntentBridge_Test.trustPolicyAndHelpers                           Pass              6           
+IB_IntentBridge_Test.vulnerableCustomerCreditIsHeldAndCanBeRejected  Pass              116         
+
+
+=== Apex Code Coverage by Class
+CLASSES                     PERCENT  UNCOVERED LINES
+──────────────────────────  ───────  ───────────────
+IB_ProposeRetentionOffer    100%                    
+IB_CheckSlaFeasibility      100%                    
+IB_DiagnoseBillShock        100%                    
+IB_TrustPolicy              100%                    
+IB_TmfMockService           100%                    
+IB_RequestCreditAdjustment  100%                    
+IB_ApproveCredit            100%                    
+IB_AuditService             100%                    
+IB_FindCustomer             100%                    
+IB_ListPendingCredits       100%                    
+IB_TelcoforceService        100%                    
+IB_RouteRequest             100%                    
+IB_SetPartnerKillSwitch     100%                    
+IB_PartnerOrder             100%                    
+IB_RestoreAndCredit         100%                    
+IB_NotifyAffected           100%                    
+IB_RepairFalloutOrder       100%                    
+IB_PartnerQualify           100%                    
+IB_DetectOutageImpact       100%                    
+
+
+=== Test Summary
+NAME                 VALUE                                    
+───────────────────  ─────────────────────────────────────────
+Outcome              Passed                                   
+Tests Ran            22                                       
+Pass Rate            100%                                     
+Fail Rate            0%                                       
+Skip Rate            0%                                       
+Test Run Id          707g800000rIYIL                          
+Test Setup Time      457 ms                                   
+Test Execution Time  4553 ms                                  
+Test Total Time      5010 ms                                  
+Org Wide Coverage    100%                                     
+

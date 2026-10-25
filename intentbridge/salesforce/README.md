@@ -1,4 +1,6 @@
-# IntentBridge: Salesforce (SFDX) package
+# Telcoforce / IntentBridge: Salesforce (SFDX) package
+
+Telcoforce is the headline concept (agentic telco on the Salesforce ecosystem); IntentBridge is its governed headless layer. Telcoforce rows are marked **TF** below.
 
 The Salesforce half of the IntentBridge working model. It holds the Agentforce actions and the trust pack that sit behind the in-browser demo. All TMF calls are **mocked in Apex** (`IB_TmfMockService`), so it deploys to any Developer Edition org without callouts. To go live, swap the mock methods for Named Credential callouts to MuleSoft or Agent Fabric. The action contracts stay the same.
 
@@ -25,6 +27,21 @@ API version 62.0. No managed packages are needed.
 | Invocable | **IB List Pending Credits** (`IB_ListPendingCredits`) | Credits waiting in the supervisor queue, with the reason each was held (used by the agent) |
 | Invocable | **IB Approve or Reject Credit** (`IB_ApproveCredit`) | Supervisor decision; audited as a human action |
 | Test | `IB_IntentBridge_Test` | 16 test methods, 100% coverage of every class |
+| Custom object **TF** | `IB_Partner__c` | Wholesale partner agreement (TMF668): status, daily qualification limit, max order lines, unit price, **Agent Fabric kill switch** |
+| Custom object **TF** | `IB_Wholesale_Order__c` | Partner order (TMF622) placed agent-to-agent: Acknowledged, Pending Partner Desk or Rejected |
+| Custom object **TF** | `IB_Fallout_Order__c` | Failed order in the overnight fallout queue (TMF622) with repair path, rule and repair log |
+| Custom object **TF** | `IB_Customer_Notification__c` | Proactive outage / restore message (TMF681): sms, or a human call for vulnerable customers |
+| Apex **TF** | `IB_TelcoforceService` | District impact, partner checks (UNKNOWN_PARTNER, KILL_SWITCH, PARTNER_NOT_ENTITLED), approved repair playbooks, superagent intent router |
+| Invocable **TF** | **IB Detect Outage Impact** | Alarm → affected customers in the district → one TMF656 service problem |
+| Invocable **TF** | **IB Notify Affected** | Tells every affected customer once (duplicates refused); vulnerable customers get a queued human call |
+| Invocable **TF** | **IB Restore and Credit** | No goodwill before restore (PROBLEM_NOT_RESOLVED); then goodwill through the credit trust pack (cap, vulnerable, SIM swap) |
+| Invocable **TF** | **IB Partner Qualify** | A2A address qualification (TMF645) under the partner's daily limit |
+| Invocable **TF** | **IB Partner Order** | A2A order within the agreement; above the line limit goes to the partner desk queue |
+| Invocable **TF** | **IB Set Partner Kill Switch** | Agent Fabric kill switch on/off for one partner agent, audited |
+| Invocable **TF** | **IB Repair Fallout Order** | Approved playbooks only; the Systems Integration Agent replays the recorded legacy-screen playbook; price changes and unknown errors are held for a person |
+| Invocable **TF** | **IB Route Request** | Superagent router: journey, confidence, human-first, prompt-injection block, second intent |
+| Test **TF** | `IB_Telcoforce_Test` | 4 test methods, 100% coverage of every Telcoforce class |
+| Scripts **TF** | `scripts/apex/seed_telcoforce.apex`, `exercise_telcoforce_*.apex`, `reset_telcoforce.apex` | 2 more LS6 customers, 3 partners, 5 fallout orders; the org exercise; a demo reset that keeps the audit log |
 | Agent | `aiAuthoringBundles/IntentBridge_Telco_Agent` | Agent Script for the **IntentBridge Telco Agent** (employee agent, 4 topics wired to the actions) |
 | Permission set | `IB_IntentBridge_User` | Objects, fields, tabs, Apex classes and custom metadata |
 | Scripts | `scripts/apex/seed.apex`, `scripts/apex/add_me_to_queue.apex` | Sample customers (same as the web demo) and service problems SP-7781 (LS6) and SP-7790 (M14) |
@@ -40,6 +57,9 @@ DRY_RUN=1 ../scripts/deploy_sf.sh
 
 # 3. Deploy, assign the perm set, load sample data, run Apex tests with coverage
 ../scripts/deploy_sf.sh
+
+# 4. Same, then exercise the Telcoforce actions on real records (writes org-results/telcoforce_action_outputs.txt)
+EXERCISE=1 ../scripts/deploy_sf.sh      # add RESET=1 to replay from a clean demo state
 ```
 
 To run the same steps by hand:
@@ -49,8 +69,9 @@ cd salesforce
 sf project deploy start --source-dir force-app --target-org intentbridge --wait 30
 sf org assign permset --name IB_IntentBridge_User --target-org intentbridge
 sf apex run --file scripts/apex/seed.apex --target-org intentbridge
+sf apex run --file scripts/apex/seed_telcoforce.apex --target-org intentbridge
 sf apex run --file scripts/apex/add_me_to_queue.apex --target-org intentbridge
-sf apex run test --class-names IB_IntentBridge_Test --code-coverage --result-format human --wait 20 --target-org intentbridge
+sf apex run test --class-names IB_IntentBridge_Test --class-names IB_Telcoforce_Test --code-coverage --result-format human --wait 20 --target-org intentbridge
 ```
 
 If the org's corporate currency is not GBP, the currency fields show in that currency. The logic is currency-agnostic.
@@ -124,3 +145,6 @@ Record Id inputs and outputs must be declared `object` with `complex_data_type_n
 
 ## Org results (Developer Edition 00Dg800000OkDdxEAF, 24 Oct 2026)
 See `../TEST_RESULTS.md` § "Salesforce org results". The raw outputs are in `org-results/`: `action_outputs.txt` (anonymous Apex exercise of every action via `scripts/apex/exercise_actions.apex`), `soql_after_actions.txt`, `credits_after_agent.txt` and `agent_transcripts.md`.
+
+## Telcoforce org results (25 Oct 2026)
+Deploy **0Afg800000IysxdCAB** (validated as 0Afg800000IybdSCAR): 20/20 Apex test methods, 100% coverage on all 19 classes. Raw outputs: `org-results/telcoforce_action_outputs.txt` and `org-results/telcoforce_apex_tests.txt`; summary in `../TEST_RESULTS.md` § 5. The agent metadata folders are in `.forceignore`: the agent is published with `sf agent` commands, and the Telcoforce actions are ready to add to it as new topics in Agent Builder.

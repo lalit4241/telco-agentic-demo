@@ -1,3 +1,8 @@
 **/jsconfig.json
 **/.eslintrc.json
 **/__tests__/**
+
+# Agent metadata retrieved from the org for reference; deploy the agent from Agent Builder / sf agent commands instead
+**/aiAgents/**
+**/aiAgentDefinitionVersions/**
+**/aiAuthoringBundles/**

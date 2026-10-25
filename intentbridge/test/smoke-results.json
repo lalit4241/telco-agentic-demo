@@ -1,7 +1,7 @@
 {
   "url": "file:///workspace/intentbridge/dist/index.html",
   "chrome": "/usr/bin/google-chrome",
-  "at": "2026-10-24T23:14:42.561Z",
+  "at": "2026-10-25T23:16:21.752Z",
   "results": [
     {
       "name": "Page loads with KPI strip",
@@ -77,6 +77,108 @@
       "ok": true
     },
     {
+      "name": "Telcoforce proactive short completes",
+      "ok": true,
+      "detail": "done"
+    },
+    {
+      "name": "Proactive trace shows TMF642, TMF656, TMF681 and the goodwill credit",
+      "ok": true
+    },
+    {
+      "name": "Slackforce shows the outage channel",
+      "ok": true
+    },
+    {
+      "name": "Telcoforce proactive extended completes",
+      "ok": true,
+      "detail": "done"
+    },
+    {
+      "name": "Telcoforce wholesale PRT-301 completes",
+      "ok": true,
+      "detail": "done"
+    },
+    {
+      "name": "Wholesale trace shows A2A, TMF645, TMF622, CONTRACT_LIMIT, KILL_SWITCH",
+      "ok": true
+    },
+    {
+      "name": "Telcoforce wholesale PRT-302 completes",
+      "ok": true,
+      "detail": "done"
+    },
+    {
+      "name": "Suspended partner is refused",
+      "ok": true
+    },
+    {
+      "name": "Telcoforce wholesale PRT-303 completes",
+      "ok": true,
+      "detail": "done"
+    },
+    {
+      "name": "Rate limit hit then retried within limit",
+      "ok": true
+    },
+    {
+      "name": "Telcoforce fallout completes",
+      "ok": true,
+      "detail": "done"
+    },
+    {
+      "name": "Fallout trace shows approved playbooks and human exceptions",
+      "ok": true
+    },
+    {
+      "name": "Queue holds the human call, partner desk and ops exceptions",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Telcoforce tab renders 3 journey cards",
+      "ok": true
+    },
+    {
+      "name": "Superagent routes outage to proactive",
+      "ok": true,
+      "detail": "proactive"
+    },
+    {
+      "name": "Superagent routes partner to wholesale with PRT-301",
+      "ok": true,
+      "detail": "wholesale"
+    },
+    {
+      "name": "Superagent routes to fallout",
+      "ok": true,
+      "detail": "fallout"
+    },
+    {
+      "name": "Low confidence hands to a person",
+      "ok": true
+    },
+    {
+      "name": "Injection blocked by the superagent",
+      "ok": true
+    },
+    {
+      "name": "Multi-intent + vulnerable customer flagged human-first",
+      "ok": true
+    },
+    {
+      "name": "Kill switch denies the partner at the gateway",
+      "ok": true
+    },
+    {
+      "name": "Lifting the kill switch restores access",
+      "ok": true
+    },
+    {
+      "name": "\"Run this journey\" from the superagent completes",
+      "ok": true
+    },
+    {
       "name": "Audit chain intact",
       "ok": true
     },
@@ -87,7 +189,7 @@
     {
       "name": "Agent Evals all pass",
       "ok": true,
-      "detail": "15 / 15 passed"
+      "detail": "33 / 33 passed"
     },
     {
       "name": "CIO calculator base total £59.0m",
