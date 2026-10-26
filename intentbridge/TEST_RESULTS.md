@@ -1,27 +1,27 @@
-# Telcoforce + IntentBridge: test results
+# TelForce + IntentBridge: test results
 
-Telcoforce extension run on 25 October 2026 (sections 0 and 5). IntentBridge baseline run on 24 October 2026, on the build box (Linux, Node v20.19.2, Google Chrome 156.0.8078.47, @salesforce/cli/2.155.7 linux-x64 node-v24.21.0).
+TelForce extension run on 25 October 2026 (sections 0 and 5). IntentBridge baseline run on 24 October 2026, on the build box (Linux, Node v20.19.2, Google Chrome 156.0.8078.47, @salesforce/cli/2.155.7 linux-x64 node-v24.21.0).
 
 ![IntentBridge live demo](docs/screenshot.png)
 
 More screenshots: [CIO view](docs/cio.png) · [Agent Fabric](docs/fabric.png)
 
-## 0. Telcoforce extension (25 October 2026): summary
+## 0. TelForce extension (25 October 2026): summary
 
 | Suite | Result |
 |---|---|
-| Unit tests, `npm test` (17 engine + 10 Telcoforce) | ✅ **27/27** passed |
-| Headless-Chrome smoke, `npm run smoke` | ✅ **46/46** passed (23 earlier checks + 23 Telcoforce checks) |
-| In-app Agent Evals | ✅ **33/33** passed (15 IntentBridge + 18 Telcoforce) |
+| Unit tests, `npm test` (17 engine + 10 TelForce) | ✅ **27/27** passed |
+| Headless-Chrome smoke, `npm run smoke` | ✅ **53/53** passed (23 earlier + 23 TelForce + 7 password-gate and branding checks; rebrand re-run 26 Oct 2026) |
+| In-app Agent Evals | ✅ **33/33** passed (15 IntentBridge + 18 TelForce) |
 | Apex tests (`IB_IntentBridge_Test` + `IB_Telcoforce_Test`) | ✅ **20/20** test methods passed, **100%** org-wide coverage, every one of 19 classes at 100% |
 | Salesforce deploy | ✅ validate **0Afg800000IybdSCAR**, deploy **0Afg800000IysxdCAB**, test run 707g800000rIYIL |
-| Telcoforce actions on real org records | ✅ 33 outputs, audit chain verifies ok (87 entries) |
+| TelForce actions on real org records | ✅ 33 outputs, audit chain verifies ok (87 entries) |
 
-Screenshots: [proactive care](docs/telcoforce-proactive.png) · [wholesale A2A](docs/telcoforce-wholesale.png) · [fallout repair](docs/telcoforce-fallout.png) · [superagent](docs/telcoforce-superagent.png)
+Screenshots: [proactive care](docs/telforce-proactive.png) · [wholesale A2A](docs/telforce-wholesale.png) · [fallout repair](docs/telforce-fallout.png) · [superagent](docs/telforce-superagent.png)
 
-![Telcoforce proactive care](docs/telcoforce-proactive.png)
+![TelForce proactive care](docs/telforce-proactive.png)
 
-### Telcoforce unit tests (`test/telcoforce.test.js`): 10/10
+### TelForce unit tests (`test/telcoforce.test.js`): 10/10
 | | Test |
 |---|---|
 | ✅ | telcoforce loads on top of the IntentBridge engine |
@@ -32,16 +32,19 @@ Screenshots: [proactive care](docs/telcoforce-proactive.png) · [wholesale A2A](
 | ✅ | kill switch applies to agents and partners |
 | ✅ | fallout repair: deterministic outcomes (approving PO-77003 sets the catalogue price £389) |
 | ✅ | superagent routing |
-| ✅ | full eval suite (IntentBridge + Telcoforce) passes |
-| ✅ | KPI strip includes Telcoforce tiles |
+| ✅ | full eval suite (IntentBridge + TelForce) passes |
+| ✅ | KPI strip includes TelForce tiles |
 
-### Telcoforce smoke checks (23 of the 46)
-Proactive short and extended complete; trace shows TMF642, TMF656, TMF681 and the goodwill credit; Slackforce outage channel; wholesale PRT-301/302/303 complete; trace shows A2A, TMF645, TMF622, CONTRACT_LIMIT and KILL_SWITCH; suspended partner refused; rate limit hit then retried within limit; fallout completes with approved playbooks and human exceptions; the queue holds the human call, partner desk and ops exceptions; the Telcoforce tab renders 3 journey cards; the superagent routes outage, partner (with PRT-301) and fallout asks; low confidence hands to a person; injection blocked; multi-intent + vulnerable flagged human-first; the kill switch denies the partner at the gateway and lifting it restores access; "Run this journey" from the superagent completes. Raw output: [test/smoke-results.json](test/smoke-results.json)
+### Password gate and branding checks (7 of the 53, added 26 October 2026)
+Password not in the built HTML; app content encrypted (no app strings in source, AES-GCM present); branded login shown and app not rendered; wrong password shows an error and stays locked; right password unlocks; unlock remembered across reload (sessionStorage); TelForce is the sole brand (header lockup "TelForce" + "The Agentic Telco", page title "TelForce - The Agentic Telco", no LC lockup) and the footer carries the plain-text credit and the "Built on Salesforce Agentforce · aligned to TM Forum ODA" line. Re-run on 26 October 2026 after the TelForce rename: unit 27/27, smoke 53/53, evals 33/33. Screenshots: [login](docs/telforce-login.png) · [home](docs/telforce-home.png) · [brand preview](docs/brand/preview.png)
 
-### Telcoforce evals (18 of the 33)
-Every affected customer told before they call · vulnerable customer gets a person · SIM-swap holds goodwill · above-cap goodwill never auto-applied · no goodwill before restore · one parent ticket, no repeat messages · entitled partner qualifies and orders within contract · suspended partner gets nothing · daily qualification limit holds · kill switch isolates a partner agent · partner agent cannot read retail customers · fallout repair is deterministic · price change always goes to a human · unknown errors and unrecorded screens not improvised · superagent routes the new intents · superagent blocks injection and hands vulnerable callers to a person · superagent offers a person when not confident · no raw personal data in Telcoforce journeys.
+### TelForce smoke checks (23 of the 53)
+Proactive short and extended complete; trace shows TMF642, TMF656, TMF681 and the goodwill credit; Slackforce outage channel; wholesale PRT-301/302/303 complete; trace shows A2A, TMF645, TMF622, CONTRACT_LIMIT and KILL_SWITCH; suspended partner refused; rate limit hit then retried within limit; fallout completes with approved playbooks and human exceptions; the queue holds the human call, partner desk and ops exceptions; the TelForce tab renders 3 journey cards; the superagent routes outage, partner (with PRT-301) and fallout asks; low confidence hands to a person; injection blocked; multi-intent + vulnerable flagged human-first; the kill switch denies the partner at the gateway and lifting it restores access; "Run this journey" from the superagent completes. Raw output: [test/smoke-results.json](test/smoke-results.json)
 
-## 1. Engine unit tests: `npm test` (node:test): 17/17 passed (IntentBridge baseline; with Telcoforce the suite is 27/27, see section 0)
+### TelForce evals (18 of the 33)
+Every affected customer told before they call · vulnerable customer gets a person · SIM-swap holds goodwill · above-cap goodwill never auto-applied · no goodwill before restore · one parent ticket, no repeat messages · entitled partner qualifies and orders within contract · suspended partner gets nothing · daily qualification limit holds · kill switch isolates a partner agent · partner agent cannot read retail customers · fallout repair is deterministic · price change always goes to a human · unknown errors and unrecorded screens not improvised · superagent routes the new intents · superagent blocks injection and hands vulnerable callers to a person · superagent offers a person when not confident · no raw personal data in TelForce journeys.
+
+## 1. Engine unit tests: `npm test` (node:test): 17/17 passed (IntentBridge baseline; with TelForce the suite is 27/27, see section 0)
 
 | | Test |
 |---|---|
@@ -63,7 +66,7 @@ Every affected customer told before they call · vulnerable customer gets a pers
 | ✅ | evals suite all pass |
 | ✅ | CIO calculator matches the Page defaults |
 
-## 2. Headless-Chrome smoke test: `npm run smoke` (playwright-core with system Chrome against file:// dist/index.html): 23/23 baseline checks passed (the full run is now 46/46, see section 0)
+## 2. Headless-Chrome smoke test: `npm run smoke` (playwright-core with system Chrome against file:// dist/index.html): 23/23 baseline checks passed (the full run is now 53/53, see section 0)
 
 | | Check |
 |---|---|
@@ -93,7 +96,7 @@ Every affected customer told before they call · vulnerable customer gets a pers
 
 Raw output: [test/smoke-results.json](test/smoke-results.json)
 
-## 3. In-app Agent Evals: 15/15 IntentBridge cases passed (33/33 with Telcoforce)
+## 3. In-app Agent Evals: 15/15 IntentBridge cases passed (33/33 with TelForce)
 Covers injection blocking (router and gateway), vulnerable-customer hand-off, the credit cap, the SIM-swap hold, out-of-scope denial, PII never reaching agents, infeasible sites caught by the TMF921 probe, consent before order, AM confirmation, product governance, audit-chain integrity and tamper detection.
 
 ## 4. Salesforce org results (Developer Edition, org 00Dg800000OkDdxEAF, alias `intentbridge`, 24 Oct 2026)
@@ -143,8 +146,8 @@ Raw outputs: `salesforce/org-results/action_outputs.txt`, `soql_after_actions.tx
 
 After the agent run: 7 credits (2 Applied, 2 Approved, 3 Pending Approval), and the audit chain verifies ok with 21 entries. Transcripts are in `salesforce/org-results/agent_transcripts.md` and `org-results/agent/*.jsonl`; the credit table is in `credits_after_agent.txt`.
 
-## 5. Telcoforce on the Salesforce org (alias `intentbridge`, 25 Oct 2026)
-No org settings were changed and no paid features were enabled. Added: 4 custom objects (`IB_Partner__c`, `IB_Wholesale_Order__c`, `IB_Fallout_Order__c`, `IB_Customer_Notification__c`), 9 Apex classes (8 invocable actions in category **Telcoforce** + `IB_TelcoforceService`), `IB_Telcoforce_Test`, permission-set and queue updates, and seed data (2 more LS6 customers, 3 partners, 5 fallout orders). Agent metadata retrieved earlier is now listed in `.forceignore` (it is managed with `sf agent` commands, not deployed by the script).
+## 5. TelForce on the Salesforce org (alias `intentbridge`, 25 Oct 2026)
+No org settings were changed and no paid features were enabled. Added: 4 custom objects (`IB_Partner__c`, `IB_Wholesale_Order__c`, `IB_Fallout_Order__c`, `IB_Customer_Notification__c`), 9 Apex classes (8 invocable actions in category **TelForce** + `IB_TelcoforceService`), `IB_Telcoforce_Test`, permission-set and queue updates, and seed data (2 more LS6 customers, 3 partners, 5 fallout orders). Agent metadata retrieved earlier is now listed in `.forceignore` (it is managed with `sf agent` commands, not deployed by the script).
 
 | Step | Id | Result |
 |---|---|---|
@@ -153,7 +156,7 @@ No org settings were changed and no paid features were enabled. Added: 4 custom 
 
 Apex detail: `salesforce/org-results/telcoforce_apex_tests.txt`.
 
-### Telcoforce actions on real records (`scripts/apex/exercise_telcoforce_*.apex`)
+### TelForce actions on real records (`scripts/apex/exercise_telcoforce_*.apex`)
 | Scenario | Org result |
 |---|---|
 | Detect outage ALM-56001 (OLT-LDS-HDY-03, LS6) | ✅ SP-ALM-56001 opened, 4 customers affected (CUST-1001, 1002, 1005, 1006), 1 vulnerable |
@@ -167,10 +170,10 @@ Apex detail: `salesforce/org-results/telcoforce_apex_tests.txt`.
 | Superagent route | ✅ outage → proactive, partner → wholesale, failed orders → fallout, bill → consumer; bereavement → HUMAN_FIRST; injection → PROMPT_INJECTION blocked; "Hello there" → LOW_CONFIDENCE |
 | Audit chain verify | ✅ ok, 87 entries, no break |
 
-Raw output: `salesforce/org-results/telcoforce_action_outputs.txt`. Replay from a clean demo state with `EXERCISE=1 RESET=1 scripts/deploy_sf.sh` (`reset_telcoforce.apex` removes only Telcoforce demo records; the audit log is kept).
+Raw output: `salesforce/org-results/telcoforce_action_outputs.txt`. Replay from a clean demo state with `EXERCISE=1 RESET=1 scripts/deploy_sf.sh` (`reset_telcoforce.apex` removes only TelForce demo records; the audit log is kept).
 
 ## Known limitations
-- Telcoforce partner agents, the Systems Integration Agent and long-horizon check-ins are simulated in the web model; in the org they are Apex invocable actions ready to wire into Agent Builder, not yet added to the published agent's topics.
+- TelForce partner agents, the Systems Integration Agent and long-horizon check-ins are simulated in the web model; in the org they are Apex invocable actions ready to wire into Agent Builder, not yet added to the published agent's topics.
 - The agent was tested with `sf agent preview` against the live org. A formal `sf agent test` suite (AiEvaluationDefinition, Testing Center) was not created. LLM responses vary in wording from run to run.
 - The agent is an Employee agent, run in preview and Agent Builder. Exposing it to customers would need a Service agent, an agent user and a Messaging channel, which this run deliberately did not set up.
 - Every TMF API, Salesforce, Slack, Claude and MuleSoft behaviour in the web model is simulated in the browser with fictional data. Payloads follow TMF Open API resource shapes, simplified.

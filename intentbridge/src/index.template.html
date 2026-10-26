@@ -1,12 +1,22 @@
 <!doctype html>
 <html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Telcoforce: agentic telco on Salesforce, governed by IntentBridge</title>
+<title>TelForce - The Agentic Telco</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="/*FAVICON*/">
 <style>/*CSS*/</style></head>
-<body>
-<header><h1>Telcoforce <span>agentic telco on the Salesforce ecosystem · governed by IntentBridge (AIforce × TM Forum ODA)</span></h1><span class="badge-sim">SIMULATED · fictional data</span>
-<nav><button data-tab="telcoforce">Telcoforce</button><button data-tab="demo" class="on">Live demo</button><button data-tab="fabric">Agent Fabric &amp; audit</button><button data-tab="queue">Supervisor queue<span class="cnt" id="qcount" style="display:none"></span></button><button data-tab="evals">Agent Evals</button><button data-tab="cio">CIO view</button><button data-tab="api">TMF API explorer</button><button id="btn-reset" title="Reset all state">↺ Reset</button></nav></header>
-<div class="kpis" id="kpis"></div>
-<main><div id="tab" class="tab on"></div><noscript><p>This working model needs JavaScript enabled.</p></noscript></main>
-<footer>Telcoforce is a concept by LalitC; IntentBridge is its governed headless layer. Proposed Tech Mahindra accelerator concept. All customers, sites, numbers and systems are fictional; Salesforce, Slack, Claude, MuleSoft and TM Forum capabilities are simulated in-browser, not connected. TMF payloads follow Open API resource shapes (simplified). No data leaves this page.</footer>
-<script>/*JS*/</script>
+<body class="locked">
+<div id="gate" role="dialog" aria-labelledby="gate-h">
+ <div class="gate-card">
+  <div class="gate-brand">/*TFLOCKUP*/</div>
+  <h2 id="gate-h">Private preview</h2>
+  <p class="gate-sub">This concept demo is password protected. Enter the password you were given.</p>
+  <form id="gate-form" autocomplete="off"><label for="gate-pw">Password</label>
+   <div class="gate-row"><input id="gate-pw" type="password" autocomplete="current-password" required autofocus><button id="gate-btn" type="submit">Unlock demo</button></div>
+   <p id="gate-err" role="alert" aria-live="assertive"></p></form>
+  <div class="gate-foot"><span>Built on Salesforce Agentforce · aligned to TM Forum ODA</span><span>Personal concept demo by Lalit Chauhan · not an official Salesforce product</span></div>
+ </div>
+</div>
+<div id="app"></div>
+<noscript><p style="padding:20px">This demo needs JavaScript enabled.</p></noscript>
+<script>/*GATE*/</script>
 </body></html>

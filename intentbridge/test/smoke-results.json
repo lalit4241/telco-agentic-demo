@@ -1,8 +1,36 @@
 {
   "url": "file:///workspace/intentbridge/dist/index.html",
   "chrome": "/usr/bin/google-chrome",
-  "at": "2026-10-25T23:16:21.752Z",
+  "at": "2026-10-26T11:15:28.440Z",
   "results": [
+    {
+      "name": "Gate: password not in built HTML",
+      "ok": true
+    },
+    {
+      "name": "Gate: app content encrypted (not readable in source)",
+      "ok": true
+    },
+    {
+      "name": "Gate: branded TelForce login screen shown, app not rendered",
+      "ok": true
+    },
+    {
+      "name": "Gate: wrong password shows an error and stays locked",
+      "ok": true
+    },
+    {
+      "name": "Gate: right password unlocks the app",
+      "ok": true
+    },
+    {
+      "name": "Gate: unlock remembered for the tab (sessionStorage)",
+      "ok": true
+    },
+    {
+      "name": "Branding: TelForce sole brand in header, no LC lockup, footer credit",
+      "ok": true
+    },
     {
       "name": "Page loads with KPI strip",
       "ok": true
@@ -77,7 +105,7 @@
       "ok": true
     },
     {
-      "name": "Telcoforce proactive short completes",
+      "name": "TelForce proactive short completes",
       "ok": true,
       "detail": "done"
     },
@@ -90,12 +118,12 @@
       "ok": true
     },
     {
-      "name": "Telcoforce proactive extended completes",
+      "name": "TelForce proactive extended completes",
       "ok": true,
       "detail": "done"
     },
     {
-      "name": "Telcoforce wholesale PRT-301 completes",
+      "name": "TelForce wholesale PRT-301 completes",
       "ok": true,
       "detail": "done"
     },
@@ -104,7 +132,7 @@
       "ok": true
     },
     {
-      "name": "Telcoforce wholesale PRT-302 completes",
+      "name": "TelForce wholesale PRT-302 completes",
       "ok": true,
       "detail": "done"
     },
@@ -113,7 +141,7 @@
       "ok": true
     },
     {
-      "name": "Telcoforce wholesale PRT-303 completes",
+      "name": "TelForce wholesale PRT-303 completes",
       "ok": true,
       "detail": "done"
     },
@@ -122,7 +150,7 @@
       "ok": true
     },
     {
-      "name": "Telcoforce fallout completes",
+      "name": "TelForce fallout completes",
       "ok": true,
       "detail": "done"
     },
@@ -136,7 +164,7 @@
       "detail": ""
     },
     {
-      "name": "Telcoforce tab renders 3 journey cards",
+      "name": "TelForce tab renders 3 journey cards",
       "ok": true
     },
     {

@@ -1,6 +1,6 @@
-# Telcoforce / IntentBridge: Salesforce (SFDX) package
+# TelForce / IntentBridge: Salesforce (SFDX) package
 
-Telcoforce is the headline concept (agentic telco on the Salesforce ecosystem); IntentBridge is its governed headless layer. Telcoforce rows are marked **TF** below.
+TelForce is the headline concept (agentic telco on the Salesforce ecosystem); IntentBridge is its governed headless layer. TelForce rows are marked **TF** below.
 
 The Salesforce half of the IntentBridge working model. It holds the Agentforce actions and the trust pack that sit behind the in-browser demo. All TMF calls are **mocked in Apex** (`IB_TmfMockService`), so it deploys to any Developer Edition org without callouts. To go live, swap the mock methods for Named Credential callouts to MuleSoft or Agent Fabric. The action contracts stay the same.
 
@@ -40,7 +40,7 @@ API version 62.0. No managed packages are needed.
 | Invocable **TF** | **IB Set Partner Kill Switch** | Agent Fabric kill switch on/off for one partner agent, audited |
 | Invocable **TF** | **IB Repair Fallout Order** | Approved playbooks only; the Systems Integration Agent replays the recorded legacy-screen playbook; price changes and unknown errors are held for a person |
 | Invocable **TF** | **IB Route Request** | Superagent router: journey, confidence, human-first, prompt-injection block, second intent |
-| Test **TF** | `IB_Telcoforce_Test` | 4 test methods, 100% coverage of every Telcoforce class |
+| Test **TF** | `IB_Telcoforce_Test` | 4 test methods, 100% coverage of every TelForce class |
 | Scripts **TF** | `scripts/apex/seed_telcoforce.apex`, `exercise_telcoforce_*.apex`, `reset_telcoforce.apex` | 2 more LS6 customers, 3 partners, 5 fallout orders; the org exercise; a demo reset that keeps the audit log |
 | Agent | `aiAuthoringBundles/IntentBridge_Telco_Agent` | Agent Script for the **IntentBridge Telco Agent** (employee agent, 4 topics wired to the actions) |
 | Permission set | `IB_IntentBridge_User` | Objects, fields, tabs, Apex classes and custom metadata |
@@ -58,7 +58,7 @@ DRY_RUN=1 ../scripts/deploy_sf.sh
 # 3. Deploy, assign the perm set, load sample data, run Apex tests with coverage
 ../scripts/deploy_sf.sh
 
-# 4. Same, then exercise the Telcoforce actions on real records (writes org-results/telcoforce_action_outputs.txt)
+# 4. Same, then exercise the TelForce actions on real records (writes org-results/telcoforce_action_outputs.txt)
 EXERCISE=1 ../scripts/deploy_sf.sh      # add RESET=1 to replay from a clean demo state
 ```
 
@@ -146,5 +146,5 @@ Record Id inputs and outputs must be declared `object` with `complex_data_type_n
 ## Org results (Developer Edition 00Dg800000OkDdxEAF, 24 Oct 2026)
 See `../TEST_RESULTS.md` § "Salesforce org results". The raw outputs are in `org-results/`: `action_outputs.txt` (anonymous Apex exercise of every action via `scripts/apex/exercise_actions.apex`), `soql_after_actions.txt`, `credits_after_agent.txt` and `agent_transcripts.md`.
 
-## Telcoforce org results (25 Oct 2026)
-Deploy **0Afg800000IysxdCAB** (validated as 0Afg800000IybdSCAR): 20/20 Apex test methods, 100% coverage on all 19 classes. Raw outputs: `org-results/telcoforce_action_outputs.txt` and `org-results/telcoforce_apex_tests.txt`; summary in `../TEST_RESULTS.md` § 5. The agent metadata folders are in `.forceignore`: the agent is published with `sf agent` commands, and the Telcoforce actions are ready to add to it as new topics in Agent Builder.
+## TelForce org results (25 Oct 2026)
+Deploy **0Afg800000IysxdCAB** (validated as 0Afg800000IybdSCAR): 20/20 Apex test methods, 100% coverage on all 19 classes. Raw outputs: `org-results/telcoforce_action_outputs.txt` and `org-results/telcoforce_apex_tests.txt`; summary in `../TEST_RESULTS.md` § 5. The agent metadata folders are in `.forceignore`: the agent is published with `sf agent` commands, and the TelForce actions are ready to add to it as new topics in Agent Builder.

@@ -1,4 +1,4 @@
-// Unit tests for the Telcoforce extension (node --test).
+// Unit tests for the TelForce extension (internal ids: telcoforce) (node --test).
 const test = require('node:test');
 const assert = require('node:assert');
 const IB = require('../src/telcoforce.js');
@@ -90,13 +90,13 @@ test('superagent routing', () => {
   assert.ok(e.audit.some((a) => a.tool === 'superagent.route'));
 });
 
-test('full eval suite (IntentBridge + Telcoforce) passes', () => {
+test('full eval suite (IntentBridge + TelForce) passes', () => {
   const r = new IB.Engine().runEvals();
   assert.ok(r.total >= 30, 'total ' + r.total);
   assert.equal(r.passed, r.total, JSON.stringify(r.results.filter((x) => !x.pass)));
 });
 
-test('KPI strip includes Telcoforce tiles', () => {
+test('KPI strip includes TelForce tiles', () => {
   const e = new IB.Engine(); e.start('fallout').runAll();
   const k = e.kpis(); assert.equal(k.filter((x) => x.key === 'tf-fallout')[0].value, '3');
 });

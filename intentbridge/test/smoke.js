@@ -11,8 +11,29 @@ const URL = process.env.URL || 'file://' + path.join(__dirname, '..', 'dist', 'i
   page.on('pageerror', (e) => errors.push(String(e)));
   const results = [];
   const check = (name, ok, detail) => { results.push({ name, ok: !!ok, detail }); console.log((ok ? 'PASS ' : 'FAIL ') + name + (detail ? ' — ' + detail : '')); };
+  // Password gate: no plaintext password or app content in the source; wrong password refused; right one unlocks
+  const PW = process.env.TF_DEMO_PASSWORD || fs.readFileSync(path.join(__dirname, '..', '.demo-password'), 'utf8').trim();
+  const rawHtml = fs.readFileSync(path.join(__dirname, '..', 'dist', 'index.html'), 'utf8');
+  check('Gate: password not in built HTML', !rawHtml.includes(PW));
+  check('Gate: app content encrypted (not readable in source)', !rawHtml.includes('Supervisor queue') && !rawHtml.includes('IB.JOURNEYS') && rawHtml.includes('AES-GCM'));
   await page.goto(URL);
-  await page.waitForSelector('#kpis .kpi');
+  await page.waitForSelector('#gate-pw');
+  await page.waitForTimeout(800);
+  await page.screenshot({ path: path.join(__dirname, '..', 'docs', 'telforce-login.png') });
+  check('Gate: branded TelForce login screen shown, app not rendered', (await page.$('#gate .gate-brand svg')) && /TelForce/.test(await page.$eval('#gate .gate-brand svg', (e) => e.textContent)) && !(await page.$('#kpis')));
+  await page.fill('#gate-pw', 'not-the-password');
+  await page.click('#gate-btn');
+  await page.waitForFunction(() => document.getElementById('gate-err').textContent.length > 0);
+  check('Gate: wrong password shows an error and stays locked', /not right/.test(await page.textContent('#gate-err')) && !(await page.$('#kpis')));
+  await page.fill('#gate-pw', PW);
+  await page.click('#gate-btn');
+  await page.waitForSelector('#kpis .kpi', { timeout: 20000 });
+  check('Gate: right password unlocks the app', !(await page.$('#gate')) && (await page.$$('nav button')).length >= 8);
+  await page.reload();
+  await page.waitForSelector('#kpis .kpi', { timeout: 20000 });
+  check('Gate: unlock remembered for the tab (sessionStorage)', !(await page.$('#gate')));
+  check('Branding: TelForce sole brand in header, no LC lockup, footer credit', (await page.$('.hero .tf-lockup svg')) && (await page.textContent('.hero h1')) === 'TelForce' && /The Agentic Telco/.test(await page.textContent('.hero .tagline')) && (await page.title()) === 'TelForce - The Agentic Telco' && !(await page.$('.lc-lockup')) && /Personal concept demo by Lalit Chauhan · not an official Salesforce product/.test(await page.textContent('footer')) && /Built on Salesforce Agentforce · aligned to TM Forum ODA/.test(await page.textContent('footer')));
+  await page.screenshot({ path: path.join(__dirname, '..', 'docs', 'telforce-home.png') });
   check('Page loads with KPI strip', (await page.$$('#kpis .kpi')).length >= 10);
 
   // Journey A step by step until the human step
@@ -56,7 +77,7 @@ const URL = process.env.URL || 'file://' + path.join(__dirname, '..', 'dist', 'i
   const surf = await page.textContent('#surface');
   check('Slackforce (simulated) shows channel messages', surf.includes('#noc-major-incidents'));
 
-  // ---------- Telcoforce extension ----------
+  // ---------- TelForce extension (internal ids keep telcoforce) ----------
   const shot = (n) => page.screenshot({ path: path.join(__dirname, '..', 'docs', n) });
   for (const [scen, key, val] of [['proactive', 'outage', 'short'], ['proactive', 'outage', 'extended'], ['wholesale', 'partner', 'PRT-301'], ['wholesale', 'partner', 'PRT-302'], ['wholesale', 'partner', 'PRT-303'], ['fallout']]) {
     await page.click('nav button[data-tab="demo"]');
@@ -64,24 +85,24 @@ const URL = process.env.URL || 'file://' + path.join(__dirname, '..', 'dist', 'i
     if (key) await page.selectOption('#param-' + key, val);
     await page.click('#btn-run');
     const s = await page.getAttribute('#run-status', 'data-status');
-    check(`Telcoforce ${scen}${val ? ' ' + val : ''} completes`, s === 'done', s);
+    check(`TelForce ${scen}${val ? ' ' + val : ''} completes`, s === 'done', s);
     const ev = (await page.textContent('#events')) + (await page.evaluate(() => JSON.stringify(window.__ib.runner.trace)));
     if (scen === 'proactive' && val === 'short') {
       check('Proactive trace shows TMF642, TMF656, TMF681 and the goodwill credit', ['TMF642', 'TMF656', 'TMF681', 'TMF678'].every((t) => ev.includes(t)) && ev.includes('PROBLEM_NOT_RESOLVED') && ev.includes('DUPLICATE_CONTACT'));
       await page.click('[data-surf="slack"]');
       check('Slackforce shows the outage channel', (await page.textContent('#surface')).includes('#'));
-      await shot('telcoforce-proactive.png');
+      await shot('telforce-proactive.png');
     }
     if (scen === 'wholesale' && val === 'PRT-301') {
       check('Wholesale trace shows A2A, TMF645, TMF622, CONTRACT_LIMIT, KILL_SWITCH', ['TMF645', 'TMF622', 'CONTRACT_LIMIT', 'KILL_SWITCH', 'OUT_OF_SCOPE'].every((t) => ev.includes(t)));
-      await shot('telcoforce-wholesale.png');
+      await shot('telforce-wholesale.png');
     }
     if (scen === 'wholesale' && val === 'PRT-302') check('Suspended partner is refused', ev.includes('PARTNER_NOT_ENTITLED'));
     if (scen === 'wholesale' && val === 'PRT-303') check('Rate limit hit then retried within limit', ev.includes('PARTNER_RATE_LIMIT'));
     if (scen === 'fallout') {
       check('Fallout trace shows approved playbooks and human exceptions', ['APPROVED_PLAYBOOK', 'PRICE_CHANGE_NEEDS_HUMAN', 'NO_APPROVED_PLAYBOOK', 'UNRECORDED_PLAYBOOK'].every((t) => ev.includes(t)));
       await page.click('[data-surf="coworker"]').catch(() => {});
-      await shot('telcoforce-fallout.png');
+      await shot('telforce-fallout.png');
     }
   }
   await page.click('nav button[data-tab="queue"]');
@@ -89,7 +110,7 @@ const URL = process.env.URL || 'file://' + path.join(__dirname, '..', 'dist', 'i
   check('Queue holds the human call, partner desk and ops exceptions', ['CUST-1002', 'PO-77003', 'PO-77005'].every((t) => tq.includes(t)), '');
   // Superagent tab
   await page.click('nav button[data-tab="telcoforce"]');
-  check('Telcoforce tab renders 3 journey cards', (await page.$$('.tfj')).length === 3);
+  check('TelForce tab renders 3 journey cards', (await page.$$('.tfj')).length === 3);
   const route = async (t) => {
     await page.fill('#sa-in', t);
     for (let i = 0; i < 3; i++) {
@@ -112,7 +133,7 @@ const URL = process.env.URL || 'file://' + path.join(__dirname, '..', 'dist', 'i
   check('Multi-intent + vulnerable customer flagged human-first', r.txt.includes('2 intents') && r.txt.includes('human first'));
   await page.click('#kill-PRT-301');
   check('Kill switch denies the partner at the gateway', (await page.textContent('#kill-probe')).includes('KILL_SWITCH'));
-  await shot('telcoforce-superagent.png');
+  await shot('telforce-superagent.png');
   await page.click('#kill-PRT-301');
   check('Lifting the kill switch restores access', (await page.textContent('#kill-probe')).includes('allow'));
   await page.click('#ex-0');

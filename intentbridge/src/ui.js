@@ -31,7 +31,7 @@
   function scenList() {
     return Object.keys(IB.JOURNEYS).map(function (id) {
       var j = IB.JOURNEYS[id];
-      return '<button class="scen' + (S.scen === id ? ' on' : '') + '" data-scen="' + id + '"><b>' + (j.flagship ? '<span class="tag">Flagship</span>' : '') + (j.telcoforce ? '<span class="tag tf">Telcoforce</span>' : '') + esc(j.title) + '</b><small>' + esc(j.persona) + '</small></button>';
+      return '<button class="scen' + (S.scen === id ? ' on' : '') + '" data-scen="' + id + '"><b>' + (j.flagship ? '<span class="tag">Flagship</span>' : '') + (j.telcoforce ? '<span class="tag tf">TelForce</span>' : '') + esc(j.title) + '</b><small>' + esc(j.persona) + '</small></button>';
     }).join('');
   }
   function stepList() {
@@ -123,11 +123,11 @@
     var tf = Object.keys(IB.JOURNEYS).filter(function (id) { return IB.JOURNEYS[id].telcoforce; });
     var cards = tf.map(function (id) { var j = IB.JOURNEYS[id]; return '<div class="card tfj"><h3 style="margin-top:0">' + esc(j.title) + '</h3><p class="small">' + esc(j.summary) + '</p><button class="btn sec" data-open="' + id + '">Open in live demo</button></div>'; }).join('');
     var partners = S.eng.store.partners.map(function (p) { var on = !!S.eng.killSwitch[p.id]; return '<tr><td class="mono">' + p.id + '</td><td>' + esc(p.name) + '</td><td>' + esc(p.status) + '</td><td>' + p.qualifiedToday + ' / ' + p.dailyQualificationLimit + '</td><td><button class="btn ' + (on ? '' : 'sec') + '" data-kill="' + p.id + '" id="kill-' + p.id + '">' + (on ? 'Kill switch ON: lift' : 'Pull kill switch') + '</button></td></tr>'; }).join('');
-    return '<div class="card tfhero"><h2 style="margin:0">Telcoforce: the agentic telco on the Salesforce ecosystem</h2><p class="small" style="margin:6px 0 0">One front door (Superagent) routes customer, partner and back-office work to specialist agents. Every agent call passes through <b>IntentBridge</b>, the governed headless layer: TM Forum Open API tools, ODA scopes, the trust pack, a human queue and a hash-chained audit. Simulated, fictional data.</p></div>' +
+    return '<div class="card tfhero"><h2 style="margin:0">TelForce - The Agentic Telco, on the Salesforce ecosystem</h2><p class="small" style="margin:6px 0 0">One front door (Superagent) routes customer, partner and back-office work to specialist agents. Every agent call passes through <b>IntentBridge</b>, the governed headless layer: TM Forum Open API tools, ODA scopes, the trust pack, a human queue and a hash-chained audit. Simulated, fictional data.</p></div>' +
       '<div class="g2"><div class="card"><h2>Superagent front door</h2><div class="row"><input id="sa-in" style="flex:1" placeholder="Ask anything a customer, partner or ops lead might ask" value="' + esc(S.saText || '') + '"><button class="btn" id="btn-sa">Route</button></div>' +
       '<div class="row" style="margin:8px 0;flex-wrap:wrap">' + EXAMPLES.map(function (x, i) { return '<button class="btn sec small" data-example="' + esc(x) + '" id="ex-' + i + '">' + esc(x) + '</button>'; }).join('') + '</div>' + saCard() + '</div>' +
       '<div class="card"><h2>Agent Fabric kill switch</h2><p class="small muted">Isolate a partner’s agent instantly. Calls carrying that partner are refused at the gateway and audited.</p><table class="t"><tr><th>Partner</th><th>Name</th><th>Status</th><th>Qualified today</th><th></th></tr>' + partners + '</table><p class="small" id="kill-probe">' + (S.killProbe || '') + '</p>' +
-      '<h3>What Telcoforce adds to IntentBridge</h3><ul class="small"><li>Long-horizon assurance agent with proactive TMF681 comms</li><li>Partner agents over A2A with agreement-metered TMF645/TMF622</li><li>Back-office repair with approved playbooks and a Systems Integration Agent for no-API screens</li><li>' + IB.EVALS.length + ' Agent Evals gate every change</li></ul></div></div>' +
+      '<h3>What TelForce adds to IntentBridge</h3><ul class="small"><li>Long-horizon assurance agent with proactive TMF681 comms</li><li>Partner agents over A2A with agreement-metered TMF645/TMF622</li><li>Back-office repair with approved playbooks and a Systems Integration Agent for no-API screens</li><li>' + IB.EVALS.length + ' Agent Evals gate every change</li></ul></div></div>' +
       '<div class="g3">' + cards + '</div>';
   }
 
@@ -247,7 +247,7 @@
     if (b.dataset.open) { S.scen = b.dataset.open; S.runner = null; S.tab = 'demo'; render(); return; }
     if (b.dataset.kill) {
       var k = b.dataset.kill; if (S.eng.killSwitch[k]) delete S.eng.killSwitch[k]; else S.eng.killSwitch[k] = true;
-      S.eng.appendAudit({ actor: 'human:' + S.supervisor, decision: S.eng.killSwitch[k] ? 'deny' : 'allow', rule: S.eng.killSwitch[k] ? 'KILL_SWITCH' : 'KILL_SWITCH_LIFTED', reason: 'Kill switch ' + (S.eng.killSwitch[k] ? 'set' : 'lifted') + ' for ' + k + ' from the Telcoforce console', resourceIds: [k] });
+      S.eng.appendAudit({ actor: 'human:' + S.supervisor, decision: S.eng.killSwitch[k] ? 'deny' : 'allow', rule: S.eng.killSwitch[k] ? 'KILL_SWITCH' : 'KILL_SWITCH_LIFTED', reason: 'Kill switch ' + (S.eng.killSwitch[k] ? 'set' : 'lifted') + ' for ' + k + ' from the TelForce console', resourceIds: [k] });
       var probe = S.eng.invoke('wholesale', 'partnership.get', { partner: 'PRT-301' });
       S.killProbe = 'Probe partnership.get for PRT-301 as the wholesale agent: <b>' + esc(probe.decision) + '</b> [' + esc(probe.rule) + ']';
       render(); return;

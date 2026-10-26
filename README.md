@@ -1,3 +1,5 @@
+<p><a href="./intentbridge/"><img src="intentbridge/docs/brand/telforce-lockup-light.svg" alt="TelForce - The Agentic Telco" height="56"></a></p>
+
 # Agentic working model for telecoms
 
 A self-contained demo of an **agentic working model for telecoms**, written after Dreamforce 2026. An orchestrator (a front-door superagent) routes each request to specialist agents. Those agents reach BSS/OSS only through a governed tool gateway that exposes **mock TM Forum Open APIs**. Guardrails screen the input, mask personal data, and enforce authority limits. Work that exceeds policy is handed to a person (human-in-the-loop). Every customer, bill, order, and alarm in the demo is **fictional**.
@@ -6,7 +8,7 @@ A self-contained demo of an **agentic working model for telecoms**, written afte
 
 A check of that page — HTTP status, all eight scenarios, one supervisor approval, and the prototype test run — is in [TEST_RESULTS.md](TEST_RESULTS.md).
 
-**Telcoforce demo (agentic telco on the Salesforce ecosystem):** [open `./intentbridge/`](./intentbridge/) ([live](https://lalit4241.github.io/telco-agentic-demo/intentbridge/)) — network-aware proactive care, wholesale partner agent-to-agent with an Agent Fabric kill switch, order fallout repair with the Systems Integration Agent, and a superagent router, all governed by **IntentBridge** (the AIforce × TM Forum ODA layer). One offline HTML file plus a Salesforce SFDX package (8 Telcoforce invocable actions, 100% Apex coverage). Test record: [intentbridge/TEST_RESULTS.md](intentbridge/TEST_RESULTS.md).
+**TelForce - The Agentic Telco (demo on the Salesforce ecosystem):** [open `./intentbridge/`](./intentbridge/) ([live](https://lalit4241.github.io/telco-agentic-demo/intentbridge/)) — network-aware proactive care, wholesale partner agent-to-agent with an Agent Fabric kill switch, order fallout repair with the Systems Integration Agent, and a superagent router, all governed by **IntentBridge** (the AIforce × TM Forum ODA layer). One offline HTML file plus a Salesforce SFDX package (8 TelForce invocable actions, 100% Apex coverage). The TelForce page has a light client-side password gate (password shared separately; the app is AES-GCM encrypted in the page). Built on Salesforce Agentforce · aligned to TM Forum ODA; personal concept demo by Lalit Chauhan, not an official Salesforce product. Test record: [intentbridge/TEST_RESULTS.md](intentbridge/TEST_RESULTS.md).
 
 The page at the root (`index.html`) is the offline build: one HTML file, pure JavaScript, no network calls and no API keys. Open that URL, pick one of the eight scenarios (or type a free-text request), and follow the trace — routing, TMF reads and writes, guardrail decisions, customer messages, and supervisor approvals.
 
