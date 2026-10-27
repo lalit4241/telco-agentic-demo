@@ -4,7 +4,7 @@
 
 ClaimAgent is a claims-handler copilot for **home escape-of-water** claims. Guidewire ClaimCenter is the system of record the copilot sits beside. The page is a static GitHub Pages demo, on the same publishing path as the rest of this repository (`.github/workflows/pages.yml` uploads the repo root).
 
-**Open it:** [`index.html`](./index.html) ([live](https://lalit4241.github.io/telco-agentic-demo/claimagent/)). The page asks for a password. It is the same password as the TelForce / IntentBridge demo on this site (shared separately; it is not stored in the repo).
+**Open it:** [`index.html`](./index.html) ([live](https://lalit4241.github.io/telco-agentic-demo/claimagent/)). The page asks for a password. ClaimAgent uses its own password, separate from the other demos on this site (shared separately; it is not stored in the repo).
 
 **About the password gate.** Same mechanism as [`intentbridge/build.js`](../intentbridge/build.js). The app markup and JavaScript are encrypted at build time with AES-256-GCM. The key is derived from the password with PBKDF2-SHA-256 (250,000 iterations, random salt) and decrypted with WebCrypto after unlock. The page stores only a salted SHA-256 verifier, never the password. Unlock is remembered for the browser tab (`sessionStorage` key `ca-demo-key`); **Lock** clears it. **Reset demo** restores the synthetic claims, notes, review queue and audit trail (`localStorage` key `claimagent-demo-state-v1`). This keeps casual visitors out. It is not access control for confidential data.
 
@@ -22,10 +22,10 @@ npm run eval      # AI quality gate; exits 1 on FAIL
 npm run eval -- --no-guardrail
 ```
 
-Rebuild the encrypted page (password from `TF_DEMO_PASSWORD` or a git-ignored `.demo-password`; the build refuses to write if that password appears in the output):
+Rebuild the encrypted page (ClaimAgent's own password, from `CLAIMAGENT_DEMO_PASSWORD` or a git-ignored `claimagent/.demo-password`; it does not fall back to the shared TelForce / IntentBridge password; the build refuses to write if that password appears in the output):
 
 ```bash
-npm run build     # writes index.html and dist/index.html
+CLAIMAGENT_DEMO_PASSWORD='…' npm run build     # writes index.html and dist/index.html
 ```
 
 ## What you can demo

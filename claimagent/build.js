@@ -1,7 +1,8 @@
-// Build a single offline file (dist/index.html + index.html) behind the same client-side password gate
-// as TelForce / IntentBridge. The app markup + JS are AES-256-GCM encrypted with a PBKDF2-SHA-256 key
-// derived from the password. The password comes from $TF_DEMO_PASSWORD or a git-ignored .demo-password
-// file (this folder, or intentbridge/). It is never written into the page.
+// Build a single offline file (dist/index.html + index.html) behind the same kind of client-side password
+// gate as TelForce / IntentBridge, but with ClaimAgent's own password. The app markup + JS are AES-256-GCM
+// encrypted with a PBKDF2-SHA-256 key derived from the password. The password comes from
+// $CLAIMAGENT_DEMO_PASSWORD or a git-ignored claimagent/.demo-password file only (deliberately no fallback
+// to the shared TF_DEMO_PASSWORD or intentbridge/.demo-password). It is never written into the page.
 import { createRequire } from 'node:module';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -13,8 +14,8 @@ const esbuild = require('esbuild');
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const R = (...p) => path.join(__dirname, ...p);
 const readPw = (file) => (fs.existsSync(file) ? fs.readFileSync(file, 'utf8').trim() : '');
-const pw = process.env.TF_DEMO_PASSWORD || readPw(R('.demo-password')) || readPw(R('..', 'intentbridge', '.demo-password')) || readPw(R('..', '.demo-password'));
-if (!pw) { console.error('Set TF_DEMO_PASSWORD or create .demo-password (git-ignored) before building.'); process.exit(1); }
+const pw = process.env.CLAIMAGENT_DEMO_PASSWORD || readPw(R('.demo-password'));
+if (!pw) { console.error('Set CLAIMAGENT_DEMO_PASSWORD or create claimagent/.demo-password (git-ignored) before building.'); process.exit(1); }
 
 const bundled = esbuild.buildSync({
   absWorkingDir: __dirname,

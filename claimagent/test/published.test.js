@@ -13,5 +13,6 @@ test('published page uses the same AES-GCM gate and does not contain the demo in
   assert.doesNotMatch(html, /ignore all previous/i);
   assert.doesNotMatch(html, /Tech Mahindra|TechM/);
   const pwFile = new URL('../.demo-password', import.meta.url);
-  if (fs.existsSync(pwFile)) assert.equal(html.includes(fs.readFileSync(pwFile, 'utf8').trim()), false);
+  const pw = process.env.CLAIMAGENT_DEMO_PASSWORD || (fs.existsSync(pwFile) ? fs.readFileSync(pwFile, 'utf8').trim() : '');
+  if (pw) assert.equal(html.includes(pw), false);
 });
